@@ -1,81 +1,13 @@
-# 🫀 FeEcho4D: 4D Reconstruction of Fetal Left Ventricle from Echocardiography
-
-**Official repository for:**  
-**4D Reconstruction of Fetal Left Ventricle from Echocardiography via 2.5D Radial Segmentation and Graph-Fourier Reconstruction**  
-Md. Kamrul Hasan†, Qifeng Wang†, Haziq Shahard, Lucas Iijima, Nida Ruseckaite, Iris Scharnreitner, Andreas Tulzer, Bin Liu‡, Guang Yang‡, Choon Hwai Yap‡  
-
----
-
-## 📌 Overview
-
-This repository provides a complete pipeline for **4D fetal cardiac reconstruction** from echocardiography. Our pipeline introduces:
-
-- **FeEcho4D**: The first benchmark dataset for radial fetal echocardiography.
-- **SCOPE-Net**: A novel geometry-aware segmentation network.
-- **Graph-Fourier Mesh Reconstruction**: High-fidelity reconstruction from sparse radial slices.
-- **Clinical Evaluation**: Ejection Fraction (EF), Global Longitudinal/Circumferential Strain (GLS/GCS).
-
----
-
-## 🧭 Pipeline Overview
-We propose a three-stage framework for 4D fetal LV analysis:
--	**(A)**	Radial Data Preparation: Extract 2D slices by rotating planes around the LV center.
--	**(B)**	SCOPE-Net Segmentation: Perform prompt-guided, symmetry-aware segmentation on radial slices.
--	**(C)**	Graph-Fourier Reconstruction: Reconstruct temporally consistent 3D LV meshes using GHD + DVS, enabling clinical metric estimation.
-<p align="center">
-  <img src="assets/pipeline_overview.png" alt="Pipeline Overview" width="888"/>
-</p>
-
----
-
-## 🧠 SCOPE-Net: Symmetry-Aware Prompt-Guided Segmentation
-
-**SCOPE-Net is designed specifically for radial fetal ultrasound. It integrates:**
--	Flip-Consistent Radial Attention (FCRA) for angular symmetry modeling.
--	Inter-Slice Augmentation Invariance (ISAI) for self-supervised consistency.
--	Prompt Conditioning using bounding box or scribble inputs.
--	Efficient 2.5D training with 56G FLOPs per frame (vs. 79G for 3D UNet).
-
-**Architecture Highlights:**
--	U-Net backbone with symmetry-aware modules.
--	Optional spatial prompts injected via gating.
--	Robust to radial view variations and signal dropout.
-
-<p align="center">
-  <img src="assets/SCOPENet.png" alt="Pipeline Overview" width="888"/>
-</p>
-
----
-
-## 📂 FeEcho4D Dataset
+# 🫀 FeEcho4D Dataset
 
 **FeEcho4D is the first public dataset for 4D radial fetal echocardiography.**
 -	🧪 52 subjects, 1,845 annotated 3D volumes, 3M+ annotated 2D slices
 -	🌀 37 radial views per volume, full 4D coverage
--	🎯 Annotation at ED & ES, with motion-tracked intermediate frames
+-	🎯 Manual annotation across the full cardiac cycle, including both ED and ES frames
 - ✅ Clinical metrics: EF, GLS, GCS, EDV, ESV, SV
 
 **📎 Access the dataset and tools:**
 👉 [**FeEcho4D**](https://feecho4d.github.io/Website/)
-
----
-
-## 🚀 Getting Started
-
-1. Install Dependencies
-```bash
-git clone https://github.com/kamruleee51/FeEcho4D.git
-cd FeEcho4D
-pip install -r requirements.txt
-```
-2.xxx
-```bash
-xxx
-```
-3.xxx
-```bash
-xxx
-```
 
 ---
 
