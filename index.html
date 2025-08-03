@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FeEcho4D</title>
+  <meta name="description" content="FeEcho4D: A Radial 4D Fetal Echocardiography Dataset" />
+
+  <!-- Bootstrap & Favicon -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="icon" href="Image/Logo/favicon.ico" type="image/x-icon" />
+
+  <style>
+    /* 字体定义 */
+    @font-face {
+      font-family: 'Imperial Sans Display';
+      src: url('fonts/ImperialSansDisplay-Light.woff2') format('woff2');
+      font-weight: 300;
+    }
+    @font-face {
+      font-family: 'Imperial Sans Display';
+      src: url('fonts/ImperialSansDisplay-Semibold.woff2') format('woff2');
+      font-weight: 600;
+    }
+
+    /* 全局基础样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Imperial Sans Display', sans-serif;
+      background-color: #ffffff;
+      color: #363636;
+    }
+
+    /* 半透明全局背景 */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('Image/Logo/IMPERIAL_Pattern_Reactive_6_varied_size_CMYK.png') center center repeat; /* 背景图路径 */
+      background-size: 700px auto; /* 调整纹理大小 */
+      opacity: 0.05; /* 半透明 */
+      z-index: -1; /* 在所有内容之下 */
+      pointer-events: none; /* 不影响点击交互 */
+    }
+
+    /* 白条容器，固定在顶部 */
+    .top-bar {
+      background-color: #ffffff;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1200;
+      padding-left: 20px;
+    }
+
+    /* Logo 样式 */
+    .top-bar img {
+      height: 30px;
+    }
+
+    /* 导航栏固定在白条右侧 */
+    .nav-right-bottom {
+      position: absolute;  /* 相对于 .top-bar 定位 */
+      right: 20px;         /* 距离右边 20px */
+      top: 50%;            /* 垂直居中 */
+      transform: translateY(-50%);
+      display: flex;
+      gap: 10px;
+    }
+    .nav-right-bottom a {
+      font-size: 1rem;
+      color: #0434e2;
+      text-decoration: none;
+      font-weight: 400;
+    }
+    .nav-right-bottom a:hover {
+      text-decoration: underline;
+    }
+
+    /* 灰色标题区（站点头部） */
+    .header-section {
+      background-color: #a1a0a1;
+      position: relative;
+      padding: 100px 20px 80px;
+      text-align: center;
+    }
+    .header-section h1 {
+      font-size: 5rem;
+      font-weight: 600;
+      color: white;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+    .header-section p {
+      font-size: 1rem;
+      font-weight: 400;
+      color: white;
+      font-style: italic;
+
+    }
+    .header-content {
+      display: flex;
+      justify-content: center;  /* 居中对齐整体 */
+      align-items: center;       /* 垂直居中 */
+      gap: 40px;                 /* 左右两侧图标与中间文字间距 */
+      flex-wrap: wrap;           /* 屏幕窄时自动换行，避免遮挡 */
+    }
+    .header-icon {
+      width: 120px;      /* 调整图标宽度 */
+      max-width: 20vw;   /* 窗口缩小时自动缩放 */
+      flex-shrink: 0;    /* 不压缩图标 */
+    }
+
+
+    /* 左右两侧图片样式 */
+    .side-image {
+      position: absolute;
+      top: 55%;                     /* 垂直居中 */
+      transform: translateY(-50%);
+      width: 200px;                 /* 固定尺寸，不随屏幕变 */
+      height: auto;                 /* 保持比例 */
+      opacity: 0.9;
+      z-index: 900;
+    }
+
+    /* 左右位置 */
+    .left-image {
+      left: 100px;
+    }
+
+    .right-image {
+      right: 100px;
+    }
+
+    /* 当屏幕宽度小于 1400px 时，自动隐藏左右图标 */
+    @media (max-width: 1400px) {
+      .side-image {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-right-bottom {
+        display: none;
+      }
+    }
+
+    /* 各个 Section 样式 */
+    .section {
+      padding: 40px 20px;
+      scroll-margin-top: 140px;
+    }
+    .section p {
+      text-align: justify;
+    }
+    h2 {
+      font-weight: 600;
+      color: #0434e2;
+    }
+
+    /* Dataset 步骤标题样式 */
+    .step-title {
+      color: #0434e2;
+      font-style: italic;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    /* 视频居中 */
+    video.center {
+      display: block;
+      margin: 20px auto;
+    }
+
+    /* 作者信息区 */
+    .author-section {
+      margin-top: 60px;
+      padding: 40px 20px;
+      background-color: #afafaf;
+    }
+    .author-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    .author-card {
+      width: 160px;
+      text-align: center;
+    }
+    .author-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #fffbfb;
+      margin-bottom: 10px;
+    }
+    .author-card h6 {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #ffffff;
+      margin-bottom: 5px;
+    }
+    .author-card p {
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: #ffffff;
+      font-style: italic;
+      margin: 0;
+    }
+    .author-link {
+      color: #ffffff;
+      text-decoration: none;
+      transition: color 0.2s, text-decoration 0.2s;
+    }
+    .author-link:hover {
+      color: #0434e2; /* 悬停变蓝 */
+      text-decoration: underline;
+    }
+
+    /* 页脚 */
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 顶部 LOGO -->
+  <div class="top-bar">
+    <img src="Image/Logo/IMPERIAL_logo_RGB_Blue_2024.png" alt="IMPERIAL Logo" />
+    <!-- 页面导航 -->
+    <div class="nav-right-bottom">
+      <a href="#intro">Introduction</a>
+      <a href="#motivation">Motivation</a>
+      <a href="#dataset">Dataset</a>
+      <a href="#metrics">Clinical Metrics</a>
+      <a href="#code">Code</a>
+      <a href="#access">Access</a>
+      <a href="#paper">Paper</a>
+    </div>
+  </div>
+
+  <!-- 站点头部（灰色背景标题区） -->
+  <div class="header-section">
+    <div class="header-content">
+      <!-- 左侧图标 -->
+      <img src="Image/Logo/4DFetal_Logo.png" alt="Left Logo" class="side-image left-image">
+
+      <!-- 标题和副标题 -->
+      <div class="header-text">
+        <h1>FeEcho4D</h1>
+        <p>The First Benchmark Dataset For Fetal Radial Echocardiography With Full Temporal Coverage</p>
+      </div>
+
+      <!-- 右侧图标 -->
+      <img src="Image/Logo/Yaplab_Logo.png" alt="Right Logo" class="side-image right-image">
+    </div>
+  </div>
+
+  <!-- 主体内容 -->
+  <div class="container">
+
+    <!-- Introduction -->
+    <section id="intro" class="section">
+      <h2>Introduction</h2>
+      <p>
+        <strong>FeEcho4D</strong> is the first large-scale benchmark dataset for fetal radial echocardiography with full 
+        <strong>4D(3D+t)</strong> temporal coverage, designed to support prenatal cardiac functional assessment and clinical translation.
+        It contains over <strong>1,845</strong> expert-annotated 3D radial volumes from <strong>52</strong> subjects, spanning diverse gestational 
+        ages and fetal poses to capture the complexity of real-world imaging. By employing a radial slicing strategy that preserves 
+        clinical acquisition geometry and anatomical symmetry, FeEcho4D enables more reliable segmentation, motion estimation, and 
+        3D reconstruction for AI-driven fetal cardiac analysis.
+      </p>
+      <img src="Image/Intro_v2.png" width="1000" class="mx-auto d-block" alt="Intro image" />
+    </section>
+
+    <!-- Motivation -->
+    <section id="motivation" class="section">
+      <h2>Motivation</h2>
+      <p>
+        Accurate prenatal cardiac assessment is essential for understanding fetal heart development and improving clinical 
+        decision-making, but achieving automated analysis remains challenging due to the scarcity of dynamic annotated data, 
+        variations in fetal pose, and the inherent complexity of ultrasound acquisition. FeEcho4D addresses this gap by offering 
+        a standardized, clinically aligned dataset with full 4D (3D+t) temporal coverage, enabling research and development of 
+        more robust, clinically relevant approaches for fetal cardiac studies.
+      </p>
+    </section>
+
+    <!-- Dataset -->
+    <section id="dataset" class="section">
+      <h2>Dataset</h2>
+      <p>
+        The <strong>FeEcho4D</strong> dataset comprises <strong>1,845</strong> 3D radial ultrasound volumes collected from <strong>52</strong> unique subjects 
+        across various gestational ages. Each volume represents a full cardiac cycle with high temporal resolution, including diverse 
+        fetal positions and orientations to reflect real-world clinical variability.
+      </p>
+
+      <!-- Step 1 -->
+      <h5 class="step-title">Step 1: Radial Resampling</h5>
+      <img src="Image/Step1_Radial_Resampling.png" width="400" class="mx-auto d-block" alt="Radial Resampling" />
+      <p>
+        All volumes are radially resampled, aligning the center to the 2D image origin. This creates uniformly sampled S radial slices 
+        (H × W) at fixed angular intervals, forming structured 3D volumes for consistent downstream analysis.
+      </p>
+
+      <!-- Step 2 -->
+      <h5 class="step-title">Step 2: Manual Segmentation with Custom Application</h5>
+      <img src="Image/Step2_Appdemo.gif" width="1000" class="mx-auto d-block" alt="Manual Annotation" />
+      <p>
+        Using a custom annotation tool, experts mark points along the left ventricular (LV) myocardium and cavity. Given ultrasound 
+        noise, users adjust both spatially and temporally to ensure accuracy, refining adjacent slices for smooth contours. All 
+        annotations undergo multi-round review and cardiologist validation.
+      </p>
+
+      <!-- Step 3 -->
+      <h5 class="step-title">Step 3: Motion Tracking and Correction</h5>
+      <video class="center" width="1000" controls autoplay muted loop>
+        <source src="Image/Step3_MT.mp4" type="video/mp4">
+      </video>
+      <p>
+        FeEcho4D generates dense cardiac masks by propagating sparse end-diastolic and end-systolic annotations using <strong>B-spline Fourier (BSF) motion model</strong>, 
+        which blends local and global deformations and regularizes trajectories to capture periodic motion. This ensures temporally 
+        coherent, anatomically consistent masks that are manually reviewed for accuracy.
+      </p>
+
+      <!-- Step 4 -->
+      <h5 class="step-title">Step 4: 3D+t Reconstruction with GHD</h5>
+      <img src="Image/Step4_GHD.png" width="1000" class="mx-auto d-block" alt="GHD Reconstruction" />
+      <p>
+       The full 3D+t segmentations are reconstructed into smooth, temporally consistent left ventricular (LV) meshes using 
+        <strong>Graph Harmonic Deformation (GHD)</strong>. The meshes are further processed with 
+        <strong>Differentiable Voxelization & Slicing (DVS)</strong>, enabling differentiable conversion to voxel grids and slices for 
+        precise dynamic metrics and seamless integration with learning-based models.
+      </p>
+
+      <!-- Final Dataset Demo Video -->
+      <video class="center" width="300" controls autoplay muted loop>
+        <source src="Image/Step5_Cardiac Cycle Reconstruction.mov" type="video/mp4">
+      </video>
+      <p>
+        Each dataset frame includes expert-validated masks (LV, MYO) and metadata (gestational age, cardiac phase indices, acquisition 
+        parameters, fetal biometry), enabling research in segmentation, tracking, motion analysis, reconstruction, and clinical functional 
+        assessment.
+      </p>
+    </section>
+
+
+    <!-- MathJax 支持（加在 <head> 中一次即可） -->
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+    <!-- Clinical Metrics Section -->
+    <section id="metrics" class="section">
+      <h2>Clinical Metrics Calculation</h2>
+      <img src="Image/Clinicl.png" width="1000" class="mx-auto d-block" alt="Clinicl" />
+
+      <p>
+        The <strong>End-Diastolic Volume (EDV)</strong> and <strong>End-Systolic Volume (ESV)</strong> 
+        are derived directly from the endocardial mesh volumes 
+        \(V_{\mathrm{ENDO,ED}}\) and \(V_{\mathrm{ENDO,ES}}\). 
+        The <strong>Stroke Volume (SV)</strong> and <strong>Ejection Fraction (EF)</strong> are computed as:
+      </p>
+      <p style="text-align:center;">
+        $$SV = EDV - ESV, \qquad EF = \frac{EDV - ESV}{EDV} \times 100\%.$$
+      </p>
+
+      <p>
+        For <strong>Global Longitudinal Strain (GLS)</strong>, the LV epicardial mesh is sliced into 
+        \(N\) radial planes aligned with the long axis. Each plane is indexed by \(\theta\), representing
+        its angular position around the long axis. On each plane, the apex-to-base lengths at 
+        end-diastole (ED) and end-systole (ES) are denoted as \(L_\theta^{\mathrm{ED}}\) and 
+        \(L_\theta^{\mathrm{ES}}\). To minimize the influence of outliers, a subset of the longest and shortest planes 
+        is excluded, and the remaining \(N'\) representative planes are used for averaging:
+      </p>
+      <p style="text-align:center;">
+        $$L_{\mathrm{ED}} = \frac{1}{N'}\sum_{\theta \notin OL} L_\theta^{\mathrm{ED}}, \qquad
+          L_{\mathrm{ES}} = \frac{1}{N'}\sum_{\theta \notin OL} L_\theta^{\mathrm{ES}}.$$
+      </p>
+      <p style="text-align:center;">
+        $$GLS = \frac{L_{\mathrm{ES}} - L_{\mathrm{ED}}}{L_{\mathrm{ED}}} \times 100\%.$$
+      </p>
+      <p><em>(In this study, we initially slice \(N=30\) planes indexed by \(\theta\), and retain \(N'=20\) planes after excluding the 5 longest and 5 shortest.)</em></p>
+
+      <p>
+        For <strong>Global Circumferential Strain (GCS)</strong>, the LV epicardial mesh is sampled 
+        with \(N\) short-axis cross-sections within the mid-ventricular region (central 10% of the 
+        LV long-axis extent). Each cross-section is indexed by \(i\) along the long axis. On each 
+        cross-section, circumferences at ED and ES, \(C_i^{\mathrm{ED}}\) and \(C_i^{\mathrm{ES}}\), are 
+        computed via ellipse fitting. After excluding several of the longest and shortest circumferences, 
+        \(N'\) representative cross-sections remain for averaging:
+      </p>
+      <p style="text-align:center;">
+        $$C_{\mathrm{ED}} = \frac{1}{N'}\sum_{i \notin OL} C_i^{\mathrm{ED}}, \qquad
+          C_{\mathrm{ES}} = \frac{1}{N'}\sum_{i \notin OL} C_i^{\mathrm{ES}}.$$
+      </p>
+      <p style="text-align:center;">
+        $$GCS = \frac{C_{\mathrm{ES}} - C_{\mathrm{ED}}}{C_{\mathrm{ED}}} \times 100\%.$$
+      </p>
+      <p><em>(In this study, we sample \(N=6\) cross-sections indexed by \(i\), and retain \(N'=4\) after excluding the 1 largest and 1 smallest circumferences.)</em></p>
+
+      <p>
+        This process ensures robust strain estimation by averaging over representative planes and 
+        cross-sections, while reducing sensitivity to noise and irregular contours.
+      </p>
+    </section>
+    
+
+    <!-- Code Section -->
+    <section id="code" class="section">
+      <h2>Code</h2>
+      <p>
+        Coming soon. Code and pre-trained models will be released on our 
+        <a href="https://github.com/kamruleee51/FeEcho4D" target="_blank" rel="noopener noreferrer">GitHub</a>.
+      </p>
+    </section>
+
+    <!-- Access Section -->
+    <section id="access" class="section">
+      <h2>Access</h2>
+      <p>
+        Data access is available upon request for non-commercial research use. Please contact the dataset team or fill in the 
+        application form (coming soon).
+      </p>
+    </section>
+
+    <!-- Paper Section -->
+    <section id="paper" class="section">
+      <h2>Paper</h2>
+      <p>
+        The FeEcho4D dataset and framework are described in our paper: <br>
+        <em>"Symmetry-Aware Prompt-Guided Segmentation and Graph-Based Reconstruction for Fetal Cardiac Motion Analysis."</em><br>
+        Preprint available soon.
+      </p>
+      <a href="Image/RadialSlicing.pdf" target="_blank" style="font-weight: 500; color: #0434e2;">
+        [Download PDF]
+      </a>
+    </section>
+  </div>
+
+  <!-- 作者介绍 -->
+  <div class="author-section text-center position-relative">
+    <h2 style="font-weight: 600; font-size: 2rem; color: #ffffff; margin-bottom: 30px;">
+      Team Members
+    </h2>
+    <div class="author-container d-flex justify-content-center flex-wrap mt-4">
+      <!-- Author 1 -->
+      <div class="author-card mx-3 my-2">
+        <img src="Image/Author/MKH.jpg" alt="Author 1" class="author-photo">
+        <h6>
+         <a href="https://github.com/kamruleee51" target="_blank" class="author-link">
+          Md. Kamrul Hasan
+          </a>
+        </h6>
+        <p>Ph.D.<br>Department of Bioengineering<br>Imperial College London</p>
+      </div>
+      <!-- Author 2 -->
+      <div class="author-card mx-3 my-2">
+        <img src="Image/Author/Qifeng.png" alt="Author 2" class="author-photo">
+        <h6>
+          <a href="https://github.com/QifengWang0702" target="_blank" class="author-link">
+          Qifeng Wang
+          </a>
+        </h6>
+        <p>Ph.D.<br>Department of Bioengineering<br>Imperial College London<br>DUT-RUISE<br>Dalian University of Technology</p>
+      </div>
+      <!-- Author 3 -->
+      <div class="author-card mx-3 my-2">
+        <img src="Image/Author/SH.jpeg" alt="Author 3" class="author-photo">
+        <h6>
+          <a href="https://github.com/haziqshahard" target="_blank" class="author-link">
+          Shahard Haziq
+          </a>
+        </h6>
+        <p>M.Eng.<br>Department of Bioengineering<br>Imperial College London</p>
+      </div>
+      <!-- Author 4 -->
+      <div class="author-card mx-3 my-2">
+        <img src="Image/Author/Yap.png" alt="Author 4" class="author-photo">
+        <h6>
+          <a href="https://profiles.imperial.ac.uk/c.yap" target="_blank" class="author-link">
+          Choon Hwai Yap
+          </a>
+        </h6>
+        <p>Assoc.Prof.<br>Department of Bioengineering<br>Imperial College London</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+  <footer class="text-center mt-5 mb-4">
+    <p>&copy; 2025 FeEcho4D Project. Developed by Qifeng Wang.</p>
+  </footer>
+
+  <!-- JS 库 -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
