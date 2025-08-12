@@ -6,8 +6,10 @@
 -	🎯 Manual annotation across the full cardiac cycle, including both ED and ES frames
 - ✅ Clinical metrics: EF, GLS, GCS, EDV, ESV, SV
 
-**📎 Access the dataset and tools:**
+**📎 Dataset and tools:**
 👉 [**FeEcho4D**](https://feecho4d.github.io/Website/)
+**📎 Paper and Code:**
+👉 [**SCOPENet**](https://github.com/kamruleee51/FeEcho4D)
 
 ---
 
