@@ -11,7 +11,9 @@
   <link rel="icon" href="Image/Logo/favicon.ico" type="image/x-icon" />
 
   <style>
-    /* 字体定义 */
+    /* =========================
+       Font faces
+       ========================= */
     @font-face {
       font-family: 'Imperial Sans Display';
       src: url('fonts/ImperialSansDisplay-Light.woff2') format('woff2');
@@ -23,7 +25,9 @@
       font-weight: 600;
     }
 
-    /* 全局基础样式 */
+    /* =========================
+       Global base styles
+       ========================= */
     * {
       margin: 0;
       padding: 0;
@@ -35,7 +39,7 @@
       color: #363636;
     }
 
-    /* 半透明全局背景 */
+    /* Semi-transparent global background texture */
     body::before {
       content: "";
       position: fixed;
@@ -43,14 +47,14 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: url('Image/Logo/IMPERIAL_Pattern_Reactive_6_varied_size_CMYK.png') center center repeat; /* 背景图路径 */
-      background-size: 700px auto; /* 调整纹理大小 */
-      opacity: 0.05; /* 半透明 */
-      z-index: -1; /* 在所有内容之下 */
-      pointer-events: none; /* 不影响点击交互 */
+      background: url('Image/Logo/IMPERIAL_Pattern_Reactive_6_varied_size_CMYK.png') center center repeat;
+      background-size: 700px auto;
+      opacity: 0.05;
+      z-index: -1;
+      pointer-events: none;
     }
 
-    /* 白条容器，固定在顶部 */
+    /* Top white bar (fixed) */
     .top-bar {
       background-color: #ffffff;
       height: 60px;
@@ -64,16 +68,16 @@
       padding-left: 20px;
     }
 
-    /* Logo 样式 */
+    /* Logo styles */
     .top-bar img {
       height: 30px;
     }
 
-    /* 导航栏固定在白条右侧 */
+    /* Navigation on the right side of the top bar */
     .nav-right-bottom {
-      position: absolute;  /* 相对于 .top-bar 定位 */
-      right: 20px;         /* 距离右边 20px */
-      top: 50%;            /* 垂直居中 */
+      position: absolute;
+      right: 20px;
+      top: 50%;
       transform: translateY(-50%);
       display: flex;
       gap: 10px;
@@ -88,7 +92,7 @@
       text-decoration: underline;
     }
 
-    /* 灰色标题区（站点头部） */
+    /* Gray header (site hero section) */
     .header-section {
       background-color: #a1a0a1;
       position: relative;
@@ -107,56 +111,42 @@
       font-weight: 400;
       color: white;
       font-style: italic;
-
     }
     .header-content {
       display: flex;
-      justify-content: center;  /* 居中对齐整体 */
-      align-items: center;       /* 垂直居中 */
-      gap: 40px;                 /* 左右两侧图标与中间文字间距 */
-      flex-wrap: wrap;           /* 屏幕窄时自动换行，避免遮挡 */
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
     }
     .header-icon {
-      width: 120px;      /* 调整图标宽度 */
-      max-width: 20vw;   /* 窗口缩小时自动缩放 */
-      flex-shrink: 0;    /* 不压缩图标 */
+      width: 120px;
+      max-width: 20vw;
+      flex-shrink: 0;
     }
 
-
-    /* 左右两侧图片样式 */
+    /* Left & right side images (optional decorative) */
     .side-image {
       position: absolute;
-      top: 55%;                     /* 垂直居中 */
+      top: 55%;
       transform: translateY(-50%);
-      width: 200px;                 /* 固定尺寸，不随屏幕变 */
-      height: auto;                 /* 保持比例 */
+      width: 200px;
+      height: auto;
       opacity: 0.9;
       z-index: 900;
     }
+    .left-image { left: 100px; }
+    .right-image { right: 100px; }
 
-    /* 左右位置 */
-    .left-image {
-      left: 100px;
-    }
-
-    .right-image {
-      right: 100px;
-    }
-
-    /* 当屏幕宽度小于 1400px 时，自动隐藏左右图标 */
+    /* Hide side images on smaller screens */
     @media (max-width: 1400px) {
-      .side-image {
-        display: none;
-      }
+      .side-image { display: none; }
     }
-
     @media (max-width: 768px) {
-      .nav-right-bottom {
-        display: none;
-      }
+      .nav-right-bottom { display: none; }
     }
 
-    /* 各个 Section 样式 */
+    /* Section spacing */
     .section {
       padding: 40px 20px;
       scroll-margin-top: 140px;
@@ -169,7 +159,7 @@
       color: #0434e2;
     }
 
-    /* Dataset 步骤标题样式 */
+    /* Dataset step title styles */
     .step-title {
       color: #0434e2;
       font-style: italic;
@@ -180,13 +170,13 @@
       text-align: left;
     }
 
-    /* 视频居中 */
+    /* Centered video helper class */
     video.center {
       display: block;
       margin: 20px auto;
     }
 
-    /* 作者信息区 */
+    /* Author section styles */
     .author-section {
       margin-top: 60px;
       padding: 40px 20px;
@@ -229,11 +219,11 @@
       transition: color 0.2s, text-decoration 0.2s;
     }
     .author-link:hover {
-      color: #0434e2; /* 悬停变蓝 */
+      color: #0434e2;
       text-decoration: underline;
     }
 
-    /* 页脚 */
+    /* Footer */
     footer {
       text-align: center;
       padding: 30px 0;
@@ -244,43 +234,42 @@
 
 <body>
 
-  <!-- 顶部 LOGO -->
+  <!-- Top logo bar -->
   <div class="top-bar">
     <img src="Image/Logo/IMPERIAL_logo_RGB_Blue_2024.png" alt="IMPERIAL Logo" />
-    <!-- 页面导航 -->
+
+    <!-- Page navigation -->
     <div class="nav-right-bottom">
-      <a href="#intro">Introduction</a>
-      <a href="#motivation">Motivation</a>
-      <a href="#dataset">Dataset</a>
-      <a href="#metrics">Clinical Metrics</a>
-      <a href="#code">Code</a>
-      <a href="#access">Access</a>
-      <a href="#paper">Paper</a>
+      <a href="#bg">Background & Motivation</a>
+      <a href="#data_pre">Dataset Preparation & Annotation</a>
+      <a href="#data_rec">3D Reconstruction & Biomarker Computation</a>
+      <a href="#data_acc">Dataset Access & Licensing</a>
+      <a href="#code">Code Repository & Publications</a>
     </div>
   </div>
 
-  <!-- 站点头部（灰色背景标题区） -->
+  <!-- Hero header -->
   <div class="header-section">
     <div class="header-content">
-      <!-- 左侧图标 -->
+      <!-- Optional left emblem -->
       <!-- <img src="Image/Logo/4DFetal_Logo.png" alt="Left Logo" class="side-image left-image"> -->
 
-      <!-- 标题和副标题 -->
+      <!-- Title and subtitle -->
       <div class="header-text">
         <h1>FeEcho4D</h1>
         <p>The First Benchmark Dataset For Fetal Radial Echocardiography With Full Temporal Coverage</p>
       </div>
 
-      <!-- 右侧图标 -->
+      <!-- Optional right emblem -->
       <!-- <img src="Image/Logo/Yaplab_Logo.png" alt="Right Logo" class="side-image right-image"> -->
     </div>
   </div>
 
-  <!-- 主体内容 -->
+  <!-- Main container -->
   <div class="container">
 
-    <!-- Introduction -->
-    <section id="intro" class="section">
+    <!-- Background & Motivation -->
+    <section id="bg" class="section">
       <h2>Introduction</h2>
       <p>
         <strong>FeEcho4D</strong> is the first large-scale benchmark dataset for fetal radial echocardiography with full 
@@ -290,12 +279,7 @@
         clinical acquisition geometry and anatomical symmetry, FeEcho4D enables more reliable segmentation, motion estimation, and 
         3D reconstruction for AI-driven fetal cardiac analysis.
       </p>
-      <img src="Image/Intro_v2.png" width="1000" class="mx-auto d-block" alt="Intro image" />
-    </section>
-
-    <!-- Motivation -->
-    <section id="motivation" class="section">
-      <h2>Motivation</h2>
+      <img src="Image/Introduction.png" width="1000" class="mx-auto d-block" alt="Intro image" />
       <p>
         Accurate prenatal cardiac assessment is essential for understanding fetal heart development and improving clinical 
         decision-making, but achieving automated analysis remains challenging due to the scarcity of dynamic annotated data, 
@@ -305,9 +289,9 @@
       </p>
     </section>
 
-    <!-- Dataset -->
-    <section id="dataset" class="section">
-      <h2>Dataset</h2>
+    <!-- Dataset Preparation & Annotation -->
+    <section id="data_pre" class="section">
+      <h2>Dataset Preparation & Annotation</h2>
       <p>
         The <strong>FeEcho4D</strong> dataset comprises <strong>1,845</strong> 3D radial ultrasound volumes collected from <strong>52</strong> unique subjects 
         across various gestational ages. Each volume represents a full cardiac cycle with high temporal resolution, including diverse 
@@ -316,55 +300,202 @@
 
       <!-- Step 1 -->
       <h5 class="step-title">Step 1: Radial Resampling</h5>
-      <img src="Image/Step1_Radial_Resampling.png" width="400" class="mx-auto d-block" alt="Radial Resampling" />
+      <img src="Image/Dataset-Step1_Radial_Resampling.png" width="1000" class="mx-auto d-block" alt="Radial Resampling" />
       <p>
         All volumes are radially resampled, aligning the center to the 2D image origin. This creates uniformly sampled S radial slices 
         (H × W) at fixed angular intervals, forming structured 3D volumes for consistent downstream analysis.
       </p>
 
+      <!-- Algorithm block: Radial Slice Extraction -->
+      <details class="rounded-lg border p-3 my-3" style="background:#fafafa;">
+        <summary style="cursor:pointer;"><strong>Algorithm 1 — Radial Slice Extraction</strong></summary>
+        <div style="margin-top:10px; line-height:1.55;">
+          <p>
+            <em>Inputs</em>: 3D volume \( \mathbf{V}\in \mathbb{R}^{H \times W \times D} \), spacing \( \mathbf{S}=[s_x,s_y,s_z] \), angle set \( \Theta \).<br>
+            <em>Outputs</em>: Radial slices \( \{ I_\theta \mid \theta \in \Theta \},\; I_\theta \in \mathbb{R}^{H \times W} \).
+          </p>
+          <ol>
+            <li>Select middle slice index \( \mathbf{M} \) along z and rotation center \( \mathbf{C}=[C_x,C_y] \) on that slice (LV center).</li>
+            <li>
+              Generate coordinate mesh \( \mathbf{X}=\{(x_i,y_j,z_k)\} \) with voxel spacing:
+              \[
+              \begin{aligned}
+              x_i &= i\cdot s_x,\quad i=1,\dots,W \\
+              y_j &= j\cdot s_y,\quad j=1,\dots,H \\
+              z_k &= k\cdot s_z,\quad k=1,\dots,D
+              \end{aligned}
+              \]
+            </li>
+            <li>
+              Translate to center:
+              \[
+              \mathbf{X}^C_p = \mathbf{X}_p - [\,C_x s_x,\; C_y s_y,\; M s_z\,],\quad p\in\{i,j,k\}.
+              \]
+            </li>
+            <li>
+              For each \( \theta \in \Theta \):
+              <ol type="a">
+                <li>
+                  Define y-axis rotation
+                  \[
+                  R_y(\theta^{\mathrm r})=
+                  \begin{bmatrix}
+                  \cos\theta^{\mathrm r} & 0 & \sin\theta^{\mathrm r}\\
+                  0&1&0\\
+                  -\sin\theta^{\mathrm r}&0&\cos\theta^{\mathrm r}
+                  \end{bmatrix},\quad
+                  \theta^{\mathrm r}=\theta\cdot\frac{\pi}{180}.
+                  \]
+                </li>
+                <li>
+                  Rotate and inverse-translate:
+                  \[
+                  \mathbf{X}^{\mathrm{rot}}=R_y(\theta^{\mathrm r})\,\mathbf{X}^C,\qquad
+                  \mathbf{X}^{\mathrm{target}}_p=\mathbf{X}^{\mathrm{rot}}_p+[\,C_x s_x,\; C_y s_y,\; M s_z\,].
+                  \]
+                </li>
+                <li>
+                  Interpolate:
+                  \[
+                  V^{\mathrm{rot}}(i,j,k)=\mathrm{interp3}\!\left(\mathbf{V},\;\mathbf{X}^{\mathrm{target}}\right).
+                  \]
+                </li>
+                <li>Slice at \( k=M \) to obtain \( I_\theta = V^{\mathrm{rot}}(:,:,M) \).</li>
+              </ol>
+            </li>
+          </ol>
+        </div>
+      </details>
+
       <!-- Step 2 -->
       <h5 class="step-title">Step 2: Manual Segmentation with Custom Application</h5>
-      <img src="Image/Step2_Appdemo.gif" width="1000" class="mx-auto d-block" alt="Manual Annotation" />
+      <img src="Image/Dataset-Step2-Segmentation_App.gif" width="1000" class="mx-auto d-block" alt="Manual Annotation" />
       <p>
         Using a custom annotation tool, experts mark points along the left ventricular (LV) myocardium and cavity. Given ultrasound 
         noise, users adjust both spatially and temporally to ensure accuracy, refining adjacent slices for smooth contours. All 
-        annotations undergo multi-round review and cardiologist validation.
+        annotations undergo multi-round review and cardiologist validation 
+        (<a href="https://github.com/haziqshahard/SegmentationApp" target="_blank">details in our SegmentationApp</a>).
       </p>
 
       <!-- Step 3 -->
       <h5 class="step-title">Step 3: Motion Tracking and Correction</h5>
       <video class="center" width="1000" controls autoplay muted loop>
-        <source src="Image/Step3_MT.mp4" type="video/mp4">
+        <source src="Image/Dataset-Step3_Motion_Tracking.mp4" type="video/mp4">
       </video>
       <p>
-        FeEcho4D generates dense cardiac masks by propagating sparse end-diastolic and end-systolic annotations using <strong>B-spline Fourier (BSF) motion model</strong>, 
+        FeEcho4D generates dense cardiac masks by propagating sparse end-diastolic and end-systolic annotations using
+        <strong><a href="https://www.nature.com/articles/s41598-020-75525-4" target="_blank">B-spline Fourier (BSF) motion model</a></strong>, 
         which blends local and global deformations and regularizes trajectories to capture periodic motion. This ensures temporally 
-        coherent, anatomically consistent masks that are manually reviewed for accuracy.
+        coherent, anatomically consistent masks, further refined with <strong>skeleton-based width correction</strong> to maintain uniform myocardial thickness, and all results are manually reviewed for accuracy.
       </p>
 
-      <!-- Step 4 -->
-      <h5 class="step-title">Step 4: 3D+t Reconstruction with GHD</h5>
-      <img src="Image/Step4_GHD.png" width="1000" class="mx-auto d-block" alt="GHD Reconstruction" />
-      <p>
-       The full 3D+t segmentations are reconstructed into smooth, temporally consistent left ventricular (LV) meshes using 
-        <strong>Graph Harmonic Deformation (GHD)</strong>. The meshes are further processed with 
-        <strong>Differentiable Voxelization & Slicing (DVS)</strong>, enabling differentiable conversion to voxel grids and slices for 
-        precise dynamic metrics and seamless integration with learning-based models.
-      </p>
+      <!-- Algorithm block: BSF-Based Temporal Mask Propagation -->
+      <details class="rounded-lg border p-3 my-3" style="background:#fafafa;">
+        <summary style="cursor:pointer;"><strong>Algorithm 2 — BSF-Based Temporal Mask Propagation</strong></summary>
+        <div style="margin-top:10px; line-height:1.55;">
+          <p>
+            <em>Inputs</em>: Radial slices \( \{x_\theta^t\}_{t=1}^T \), ED/ES masks \( M_{\mathrm{ED}}, M_{\mathrm{ES}} \), spacing \( s \), Fourier order \( N \), B-spline level \( L \).<br>
+            <em>Outputs</em>: Dense masks \( M_t \in \mathbb{R}^{S\times H\times W},\ t=1,\dots,T \).
+          </p>
+          <ol>
+            <li>
+              <strong>(Registration)</strong> For \( t=0 \) to \( T-2 \):
+              <ul>
+                <li>\(\mathrm{Register}(x_\theta^t, x_\theta^{t+1}) \Rightarrow \mathbf{d}_{t\to t+1}\)</li>
+                <li>\(\mathrm{Register}(x_\theta^0, x_\theta^{t+1}) \Rightarrow \mathbf{d}_{0\to t+1}\)</li>
+              </ul>
+            </li>
+            <li>
+              <strong>(Grid Initialization)</strong>:
+              \[
+              \mathbf{X}_0 = \mathrm{GridFromMask}(M_{\mathrm{ED}})
+              \]
+            </li>
+            <li>
+              <strong>(Grid Propagation)</strong> For \( t=0 \) to \( T-2 \):
+              \[
+              \mathbf{X}_{t+1} = w(t)\cdot(\mathbf{X}_t + \mathbf{d}_{t\to t+1}) + (1-w(t))\cdot(\mathbf{X}_0 + \mathbf{d}_{0\to t+1})
+              \]
+            </li>
+            <li>
+              <strong>(BSF Fitting)</strong>:
+              \[
+              \mathbf{X}^{\mathrm{BSF}}_t = \sum_{f=0}^N \mathbf{F}_f \cos\!\left(\frac{2\pi f t}{P}\right) + \mathbf{F}_{f+N+1} \sin\!\left(\frac{2\pi f t}{P}\right)
+              \]
+              \[
+              \mathbf{F}_f(x,y) = \sum_{i,j} B_i(x) B_j(y)\cdot \mathbf{C}_{i,j,f}
+              \]
+            </li>
+            <li>
+              <strong>(Trajectory Correction)</strong>:
+              Repeat until cost &lt; threshold:
+              <ul>
+                <li>
+                  For each control point \( u \):
+                  \[
+                  \mathbf{C}_u = \arg\min \sum_{t,\Delta t} \left\| \mathbf{X}^{\mathrm{BSF}}_{t+\Delta t} - \mathbf{X}^{\mathrm{BSF}}_t - \mathbf{d}_{t\to t+\Delta t} \right\|^2
+                  \]
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>(Mask Synthesis)</strong>:
+              For \( t=0 \) to \( T-1 \), for each \( p\in M_{\mathrm{ED}} \):
+              <ul>
+                <li>\( p_t = \mathbf{X}^{\mathrm{BSF}}_t(p) \), set \( M_t(p_t) \leftarrow 1 \)</li>
+              </ul>
+            </li>
+          </ol>
+          <p><strong>Return</strong>: \( \{M_t\}_{t=1}^T \)</p>
+        </div>
+      </details>
 
-      <!-- Final Dataset Demo Video -->
-      <video class="center" width="300" controls autoplay muted loop>
-        <source src="Image/Step5_Cardiac Cycle Reconstruction.mov" type="video/mp4">
-      </video>
-      <p>
-        Each dataset frame includes expert-validated masks (LV, MYO) and metadata (gestational age, cardiac phase indices, acquisition 
-        parameters, fetal biometry), enabling research in segmentation, tracking, motion analysis, reconstruction, and clinical functional 
-        assessment.
-      </p>
+      <!-- Algorithm block: Skeleton-Based 2D Mask Refinement -->
+      <details class="rounded-lg border p-3 my-3" style="background:#fafafa;">
+        <summary style="cursor:pointer;"><strong>Algorithm 3 — Skeleton-Based 2D Mask Refinement</strong></summary>
+        <div style="margin-top:10px; line-height:1.55;">
+          <p>
+            <em>Inputs</em>: Raw propagated mask \( M_t \in \mathbb{R}^{S\times H\times W} \); tail–ratio \( \tau\in(0,1) \); opening radius \( r \ge 0 \).<br>
+            <em>Outputs</em>: Refined mask \( \widetilde{M}_t \in \mathbb{R}^{S\times H\times W} \) with consistent width.
+          </p>
+          <ol>
+            <li>
+              For \( s = 1 \) to \( S \):
+              <ol type="a">
+                <li><strong>(Component Selection)</strong>: \( M'_s \gets \mathrm{LargestComponent}(M_t[s]) \)</li>
+                <li><strong>(Skeleton Extraction)</strong>: \( S_s \gets \mathrm{Skeletonize}(M'_s) \)</li>
+                <li>
+                  <strong>(Tail Extrapolation)</strong>: Let \( S_{\mathrm{tail}} \) be the \( \lceil \tau |S_s| \rceil \) farthest points from \( \mathrm{centroid}(S_s) \);  
+                  Fit line \( \ell_s \) via least squares and set \( S_s \gets S_s \cup (\ell_s \setminus S_s) \)
+                </li>
+                <li>
+                  <strong>(Mean Half-Width Estimation)</strong>:
+                  \[
+                  d(x) = \min_{y \in \overline{M'_s}} \| x - y \|_2,\quad x \in \Omega
+                  \]
+                  \[
+                  h_s = \left\lfloor \frac{1}{|S_s|} \sum_{x \in S_s} d(x) + \frac{1}{2} \right\rfloor
+                  \]
+                </li>
+                <li>
+                  <strong>(Uniform Mask Synthesis)</strong>:
+                  \[
+                  \widetilde{M}_t[s] = \{ x \in \Omega \mid \mathrm{dist}(x, S_s) \le h_s \}
+                  \]
+                  If \( r > 0 \):
+                  \[
+                  \widetilde{M}_t[s] \gets \mathrm{Opening}(\widetilde{M}_t[s],\ \mathrm{disk}(r))
+                  \]
+                </li>
+              </ol>
+            </li>
+          </ol>
+          <p><strong>Return</strong>: \( \widetilde{M}_t \)</p>
+        </div>
+      </details>
     </section>
 
-
-    <!-- MathJax 支持（加在 <head> 中一次即可） -->
+    <!-- MathJax support (include once, usually in <head>) -->
     <script>
       window.MathJax = {
         tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
@@ -373,95 +504,188 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 
-    <!-- Clinical Metrics Section -->
-    <section id="metrics" class="section">
-      <h2>Clinical Metrics Calculation</h2>
-      <img src="Image/Clinicl.png" width="1000" class="mx-auto d-block" alt="Clinicl" />
+    <!-- 3D Reconstruction & Biomarker Computation -->
+    <section id="data_rec" class="section">
+      <h2>3D Reconstruction & Biomarker Computation</h2>
 
+      <!-- Step 4 -->
+      <h5 class="step-title">3D Reconstruction with GHD</h5>
+      <img src="Image/Dataset-Step4_GHD.png" width="1000" class="mx-auto d-block" alt="GHD Reconstruction" />
       <p>
-        The <strong>End-Diastolic Volume (EDV)</strong> and <strong>End-Systolic Volume (ESV)</strong> 
-        are derived directly from the endocardial mesh volumes 
-        \(V_{\mathrm{ENDO,ED}}\) and \(V_{\mathrm{ENDO,ES}}\). 
-        The <strong>Stroke Volume (SV)</strong> and <strong>Ejection Fraction (EF)</strong> are computed as:
-      </p>
-      <p style="text-align:center;">
-        $$SV = EDV - ESV, \qquad EF = \frac{EDV - ESV}{EDV} \times 100\%.$$
+        The full 3D+t segmentations are reconstructed into smooth, temporally consistent left ventricular (LV) meshes using 
+        <strong>Graph Harmonic Deformation (GHD)</strong> 
+        (<a href="https://github.com/Luo-Yihao/GHDHeart" target="_blank">details in our teamwork: GHD</a>). 
+        The meshes are further processed with <strong>Differentiable Voxelization & Slicing (DVS)</strong>, enabling differentiable conversion 
+        to voxel grids and slices for precise dynamic metrics and seamless integration with learning-based models.
       </p>
 
-      <p>
-        For <strong>Global Longitudinal Strain (GLS)</strong>, the LV epicardial mesh is sliced into 
-        \(N\) radial planes aligned with the long axis. Each plane is indexed by \(\theta\), representing
-        its angular position around the long axis. On each plane, the apex-to-base lengths at 
-        end-diastole (ED) and end-systole (ES) are denoted as \(L_\theta^{\mathrm{ED}}\) and 
-        \(L_\theta^{\mathrm{ES}}\). To minimize the influence of outliers, a subset of the longest and shortest planes 
-        is excluded, and the remaining \(N'\) representative planes are used for averaging:
-      </p>
-      <p style="text-align:center;">
-        $$L_{\mathrm{ED}} = \frac{1}{N'}\sum_{\theta \notin OL} L_\theta^{\mathrm{ED}}, \qquad
-          L_{\mathrm{ES}} = \frac{1}{N'}\sum_{\theta \notin OL} L_\theta^{\mathrm{ES}}.$$
-      </p>
-      <p style="text-align:center;">
-        $$GLS = \frac{L_{\mathrm{ES}} - L_{\mathrm{ED}}}{L_{\mathrm{ED}}} \times 100\%.$$
-      </p>
-      <p><em>(In this study, we initially slice \(N=30\) planes indexed by \(\theta\), and retain \(N'=20\) planes after excluding the 5 longest and 5 shortest.)</em></p>
+      <!-- Algorithm block: GHD-Based 3D Mesh Reconstruction -->
+      <details class="rounded-lg border p-3 my-3" style="background:#fafafa;">
+        <summary style="cursor:pointer;"><strong>Algorithm 4 — GHD-Based 3D Mesh Reconstruction</strong></summary>
+        <div style="margin-top:10px; line-height:1.55;">
+          <p>
+            <em>Inputs</em>: Binary mask sequence \( \{M_t\}_{t=1}^T, \; M_t \in \mathbb{R}^{S\times H\times W} \); canonical mesh \( \mathcal{M}_0 \in \mathbb{R}^{V\times 3} \); graph basis \( U \in \mathbb{R}^{V\times B} \); radial slices \( \{x_\theta^t\}_{t=1}^T \).<br>
+            <em>Outputs</em>: Deformed mesh sequence \( \{\mathcal{M}_t\}_{t=1}^T,\; \mathcal{M}_t \in \mathbb{R}^{V\times 3} \).
+          </p>
+          <ol>
+            <li>
+              <strong>(Point Cloud Sampling)</strong>: For \( t = 1 \) to \( T \):
+              <ul>
+                <li>Sample myocardium and background point clouds from \( M_t \):  
+                  \( P_{\mathrm{myo}}^t, \; P_{\mathrm{bg}}^t \subset \mathbb{R}^{N\times 3} \)
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>(Mesh Deformation)</strong>: For \( t = 1 \) to \( T \):
+              <ul>
+                <li>Deform canonical mesh using spectral basis:  
+                  \( \mathcal{M}_t = \mathcal{M}_0 + U \cdot \phi_t \)
+                </li>
+                <li>Optimize \( \phi_t \in \mathbb{R}^{B\times 3} \) to minimize total loss</li>
+              </ul>
+            </li>
+            <li>
+              <strong>(DVS Supervision)</strong>: For \( t = 1 \) to \( T \):
+              <ul>
+                <li>Project mesh via DVS:  
+                  \( \hat{x}_\theta^t = \mathrm{DVS}(\mathcal{M}_t) \)
+                </li>
+                <li>Compute Dice loss:  
+                  \( \mathcal{L}_{\mathrm{DVS}}^t = 1 - \mathrm{Dice}(x_\theta^t, \hat{x}_\theta^t) \)
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>(Objective Optimization)</strong>:
+              \[
+              \min_{\phi_t} \; \mathcal{L}_{\mathrm{total}} = \mathcal{L}_{\mathrm{DVS}} + \lambda_1 \mathcal{L}_{\mathrm{lap}} + \lambda_2 \mathcal{L}_{\mathrm{norm}} + \lambda_3 \mathcal{L}_{\mathrm{thick}}
+              \]
+            </li>
+          </ol>
+          <p><strong>Return</strong>: \( \{\mathcal{M}_t\}_{t=1}^T \)</p>
+        </div>
+      </details>
 
+      <video class="center" width="1000" controls autoplay muted loop>
+        <source src="Image/Dataset-Reconstruction_Result.MOV" type="video/mp4">
+      </video>
       <p>
-        For <strong>Global Circumferential Strain (GCS)</strong>, the LV epicardial mesh is sampled 
-        with \(N\) short-axis cross-sections within the mid-ventricular region (central 10% of the 
-        LV long-axis extent). Each cross-section is indexed by \(i\) along the long axis. On each 
-        cross-section, circumferences at ED and ES, \(C_i^{\mathrm{ED}}\) and \(C_i^{\mathrm{ES}}\), are 
-        computed via ellipse fitting. After excluding several of the longest and shortest circumferences, 
-        \(N'\) representative cross-sections remain for averaging:
+        Each dataset frame includes expert-validated masks (LV, MYO) and metadata (gestational age, cardiac phase indices, acquisition 
+        parameters, fetal biometry), enabling research in segmentation, tracking, motion analysis, reconstruction, and clinical functional 
+        assessment.
       </p>
-      <p style="text-align:center;">
-        $$C_{\mathrm{ED}} = \frac{1}{N'}\sum_{i \notin OL} C_i^{\mathrm{ED}}, \qquad
-          C_{\mathrm{ES}} = \frac{1}{N'}\sum_{i \notin OL} C_i^{\mathrm{ES}}.$$
-      </p>
-      <p style="text-align:center;">
-        $$GCS = \frac{C_{\mathrm{ES}} - C_{\mathrm{ED}}}{C_{\mathrm{ED}}} \times 100\%.$$
-      </p>
-      <p><em>(In this study, we sample \(N=6\) cross-sections indexed by \(i\), and retain \(N'=4\) after excluding the 1 largest and 1 smallest circumferences.)</em></p>
 
+      <!-- Step 5 -->
+      <h5 class="step-title">Clinical Metrics Calculation</h5>
+      <img src="Image/Biomarker Computation.png" width="1000" class="mx-auto d-block" alt="Clinical Metrics" />
       <p>
-        This process ensures robust strain estimation by averaging over representative planes and 
-        cross-sections, while reducing sensitivity to noise and irregular contours.
+        Clinical metrics including <strong>Stroke Volume (SV)</strong>, <strong>Ejection Fraction (EF)</strong>, 
+        <strong>Global Longitudinal Strain (GLS)</strong>, and <strong>Global Circumferential Strain (GCS)</strong> 
+        are derived from the reconstructed left ventricular (LV) meshes. SV and EF are computed from 
+        endocardial volumes, while GLS and GCS are obtained by averaging changes in apex-to-base lengths 
+        and mid-ventricular circumferences across representative planes or cross-sections, excluding 
+        extreme outliers for robustness.
       </p>
+
+      <!-- Algorithm block: Clinical Metrics Computation -->
+      <details class="rounded-lg border p-3 my-3" style="background:#fafafa;">
+        <summary style="cursor:pointer;"><strong>Algorithm 5 — Clinical Metrics Computation</strong></summary>
+        <div style="margin-top:10px; line-height:1.55;">
+          <ol>
+            <li>
+              <strong>(Volume-Based Metrics)</strong>:
+              <ul>
+                <li>Measure endocardial volumes \( V_{\mathrm{ENDO,ED}} \) and \( V_{\mathrm{ENDO,ES}} \) at end-diastole (ED) and end-systole (ES).</li>
+                <li>
+                  Compute:
+                  \[
+                  SV = EDV - ESV,\quad EF = \frac{EDV - ESV}{EDV} \times 100\%.
+                  \]
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <strong>(Global Longitudinal Strain — GLS)</strong>:
+              <ul>
+                <li>
+                  Slice the LV epicardial mesh into \( N \) radial planes aligned with the long axis, indexed by \( \theta \).  
+                  <em>(In our study: \( N = 30 \))</em>
+                </li>
+                <li>For each plane, measure apex-to-base lengths \( L_\theta^{\mathrm{ED}}, L_\theta^{\mathrm{ES}} \).</li>
+                <li>
+                  Exclude the 5 longest and 5 shortest planes to retain \( N' \) representative planes.  
+                  <em>(In our study: \( N' = 20 \))</em>
+                </li>
+                <li>
+                  Compute:
+                  \[
+                  GLS = \frac{\frac{1}{N'}\sum_{\theta\notin OL} L_\theta^{\mathrm{ES}} - \frac{1}{N'}\sum_{\theta\notin OL} L_\theta^{\mathrm{ED}}}{\frac{1}{N'}\sum_{\theta\notin OL} L_\theta^{\mathrm{ED}}} \times 100\%.
+                  \]
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <strong>(Global Circumferential Strain — GCS)</strong>:
+              <ul>
+                <li>
+                  Extract \( N \) short-axis cross-sections within the mid-ventricular region, indexed by \( i \).  
+                  <em>(In our study: \( N = 6 \))</em>
+                </li>
+                <li>Measure circumferences \( C_i^{\mathrm{ED}}, C_i^{\mathrm{ES}} \) using ellipse fitting.</li>
+                <li>
+                  Exclude the 1 largest and 1 smallest circumferences to retain \( N' \) representative cross-sections.  
+                  <em>(In our study: \( N' = 4 \))</em>
+                </li>
+                <li>
+                  Compute:
+                  \[
+                  GCS = \frac{\frac{1}{N'}\sum_{i\notin OL} C_i^{\mathrm{ES}} - \frac{1}{N'}\sum_{i\notin OL} C_i^{\mathrm{ED}}}{\frac{1}{N'}\sum_{i\notin OL} C_i^{\mathrm{ED}}} \times 100\%.
+                  \]
+                </li>
+              </ul>
+            </li>
+          </ol>
+          <p><em>Outlier removal (OL) ensures robust estimation by excluding extreme geometric deviations caused by noise or irregular contours.</em></p>
+        </div>
+      </details>
     </section>
-    
 
-    <!-- Code Section -->
-    <section id="code" class="section">
-      <h2>Code</h2>
-      <p>
-        Coming soon. Code and pre-trained models will be released on our 
-        <a href="https://github.com/kamruleee51/FeEcho4D" target="_blank" rel="noopener noreferrer">GitHub</a>.
-      </p>
-    </section>
-
-    <!-- Access Section -->
-    <section id="access" class="section">
-      <h2>Access</h2>
+    <!-- Dataset Access & Licensing -->
+    <section id="data_acc" class="section">
+      <h2>Dataset Access & Licensing</h2>
       <p>
         Data access is available upon request for non-commercial research use. Please contact the dataset team or fill in the 
         application form (coming soon).
       </p>
     </section>
 
-    <!-- Paper Section -->
-    <section id="paper" class="section">
-      <h2>Paper</h2>
+    <!-- Code Repository & Publications -->
+    <section id="code" class="section">
+      <h2>Code Repository & Publications</h2>
+
+      <h5 class="step-title">Code</h5>
+      <p>
+        Coming soon. Code and pre-trained models will be released on our 
+        <a href="https://github.com/kamruleee51/FeEcho4D" target="_blank" rel="noopener noreferrer">GitHub</a>.
+      </p>
+
+      <h5 class="step-title">Paper</h5>
       <p>
         The FeEcho4D dataset and framework are described in our paper: <br>
-        <em>"Symmetry-Aware Prompt-Guided Segmentation and Graph-Based Reconstruction for Fetal Cardiac Motion Analysis."</em><br>
+        <em>"4D Reconstruction of Fetal Left Ventricle from Echocardiography via 2.5D Radial Segmentation and Graph-Fourier Reconstruction"</em><br>
         Preprint available soon.
       </p>
       <a href="Image/RadialSlicing.pdf" target="_blank" style="font-weight: 500; color: #0434e2;">
         [Download PDF]
       </a>
     </section>
+
   </div>
 
-  <!-- 作者介绍 -->
+  <!-- Author section -->
   <div class="author-section text-center position-relative">
     <h2 style="font-weight: 600; font-size: 2rem; color: #ffffff; margin-bottom: 30px;">
       Team Members
@@ -471,8 +695,8 @@
       <div class="author-card mx-3 my-2">
         <img src="Image/Author/MKH.jpg" alt="Author 1" class="author-photo">
         <h6>
-         <a href="https://github.com/kamruleee51" target="_blank" class="author-link">
-          Md. Kamrul Hasan
+          <a href="https://scholar.google.com/citations?user=36WXELIAAAAJ&hl=en" target="_blank" class="author-link">
+            Md. Kamrul Hasan
           </a>
         </h6>
         <p>Ph.D.<br>Department of Bioengineering<br>Imperial College London</p>
@@ -482,7 +706,7 @@
         <img src="Image/Author/Qifeng.png" alt="Author 2" class="author-photo">
         <h6>
           <a href="https://github.com/QifengWang0702" target="_blank" class="author-link">
-          Qifeng Wang
+            Qifeng Wang
           </a>
         </h6>
         <p>Ph.D.<br>Department of Bioengineering<br>Imperial College London<br>DUT-RUISE<br>Dalian University of Technology</p>
@@ -492,7 +716,7 @@
         <img src="Image/Author/SH.jpeg" alt="Author 3" class="author-photo">
         <h6>
           <a href="https://github.com/haziqshahard" target="_blank" class="author-link">
-          Shahard Haziq
+            Shahard Haziq
           </a>
         </h6>
         <p>M.Eng.<br>Department of Bioengineering<br>Imperial College London</p>
@@ -502,7 +726,7 @@
         <img src="Image/Author/Yap.png" alt="Author 4" class="author-photo">
         <h6>
           <a href="https://profiles.imperial.ac.uk/c.yap" target="_blank" class="author-link">
-          Choon Hwai Yap
+            Choon Hwai Yap
           </a>
         </h6>
         <p>Assoc.Prof.<br>Department of Bioengineering<br>Imperial College London</p>
@@ -510,12 +734,12 @@
     </div>
   </div>
 
-  <!-- 页脚 -->
+  <!-- Footer -->
   <footer class="text-center mt-5 mb-4">
     <p>&copy; 2025 FeEcho4D Project. Developed by Qifeng Wang.</p>
   </footer>
 
-  <!-- JS 库 -->
+  <!-- JS libraries -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
