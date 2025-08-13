@@ -257,7 +257,7 @@
       <!-- Title and subtitle -->
       <div class="header-text">
         <h1 style="font-size: 50px; font-weight: bold;">
-          FeEcho4D:<span style="font-size: 20px; font-weight: normal;"> Fetal Echocardiography 4D</span>
+          FeEcho4D<span style="font-size: 20px; font-weight: normal;">-Fetal Echocardiography 4D</span>
         </h1>
         <p>The First Benchmark Dataset For Fetal Radial Echocardiography With Full Temporal Coverage</p>
       </div>
@@ -313,7 +313,22 @@
               <li><strong>Slice-to-mask reconstruction</strong> for all time frames, producing complete 4D segmentations of each fetal echocardiography volume.</li>
           </ol>
 
-      <p>All steps are described in detail below, including technical and implementation specifics, to ensure reproducibility.</p>
+          <style>
+            @keyframes fadeIn {
+              from { opacity: 0; }
+              to { opacity: 1; }
+            }
+            .animated-text {
+              color: #0056b3;
+              font-weight: bold;
+              animation: fadeIn 1.5s ease-in-out;
+            }
+          </style>
+          
+          <p class="animated-text">
+            All steps are described in detail below, including technical and implementation specifics, to ensure reproducibility.
+          </p>
+          
 
 
     </section>
