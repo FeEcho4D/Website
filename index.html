@@ -314,14 +314,21 @@
           </ol>
 
           <style>
-            @keyframes fadeIn {
-              from { opacity: 0; }
-              to { opacity: 1; }
+            @keyframes fadeSlideIn {
+              from { 
+                opacity: 0;
+                transform: translateY(15px);
+              }
+              to { 
+                opacity: 1;
+                transform: translateY(0);
+              }
             }
             .animated-text {
               color: #0056b3;
               font-weight: bold;
-              animation: fadeIn 1.5s ease-in-out;
+              animation: fadeSlideIn 2s ease-in-out;
+              animation-delay: 0.3s;
             }
           </style>
           
