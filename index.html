@@ -273,20 +273,20 @@
       <h2>Background & Motivation</h2>
       <p>
         Fetal echocardiography is the primary tool for prenatal detection of congenital heart disease (CHD) and assessment of cardiac function, guiding early intervention and parental decision-making. However, 2D fetal CHD screening achieves only ~50% detection accuracy and exhibits substantial variability across studies, often due to human error, subjectivity, and limited anatomical coverage. While 2D imaging remains standard in clinical practice, it can miss structural defects or provide incomplete views due to foreshortening, probe misalignment, or restricted field of view. In contrast, 3D echocardiography captures the full heart volume without requiring precise alignment and can improve both detection and functional assessment. Nonetheless, although 3D/4D fetal echocardiography is available via Spatio-Temporal Image Correlation (STIC) acquisitions, it remains underused due to challenges in visualization and quantification. Deep learning–based 3D/4D cardiac reconstruction offers a practical solution to these limitations. To date, however, no DL algorithm has been developed for reconstructing cardiac geometry from 3D/4D fetal echocardiography. This gap is driven by two key factors: the lack of a public 3D/4D dataset and the inherent difficulty of generating accurate 3D ground-truth masks. Preparing such annotations is especially time-consuming in fetal imaging, where myocardial boundaries can be ambiguous, such as determining the transition from a U-shaped myocardium to a circular cross-section near the lateral wall.
+      </p>
+
+      <p>
+        Radial slicing offers a promising alternative to conventional Cartesian slicing. By rotating a 2D slicing plane around the left ventricular long axis at fixed angular intervals (θ∈[0,π]), it provides structured coverage of the myocardium from multiple orientations. Compared with fixed short-axis (SAX) and long-axis (LAX) views, radial slices are easier to annotate and deliver more uniform anatomical coverage across the heart.
+      </p>
+
+      <img src="Image/Introduction.png" width="1000" class="mx-auto d-block" alt="Intro image" />
+      <p>
         <strong>FeEcho4D</strong> is the first large-scale benchmark dataset for fetal radial echocardiography with full 
         <strong>4D(3D+t)</strong> temporal coverage, designed to support prenatal cardiac functional assessment and clinical translation.
         It contains over <strong>1,845</strong> expert-annotated 3D radial volumes from <strong>52</strong> subjects, spanning diverse gestational 
         ages and fetal poses to capture the complexity of real-world imaging. By employing a radial slicing strategy that preserves 
         clinical acquisition geometry and anatomical symmetry, FeEcho4D enables more reliable segmentation, motion estimation, and 
         3D reconstruction for AI-driven fetal cardiac analysis.
-      </p>
-
-      <p>
-        Radial slicing offers a promising alternative to conventional Cartesian slicing. By rotating a 2D slicing plane around the left ventricular long axis at fixed angular intervals (θ∈[0,π]\theta \in [0, \pi]θ∈[0,π]), it provides structured coverage of the myocardium from multiple orientations. Compared with fixed short-axis (SAX) and long-axis (LAX) views, radial slices are easier to annotate and deliver more uniform anatomical coverage across the heart.
-      </p>
-
-      <img src="Image/Introduction.png" width="1000" class="mx-auto d-block" alt="Intro image" />
-      <p>
         Accurate prenatal cardiac assessment is essential for understanding fetal heart development and improving clinical 
         decision-making, but achieving automated analysis remains challenging due to the scarcity of dynamic annotated data, 
         variations in fetal pose, and the inherent complexity of ultrasound acquisition. FeEcho4D addresses this gap by offering 
