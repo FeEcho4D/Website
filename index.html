@@ -341,19 +341,34 @@
     <!-- Dataset Preparation & Annotation -->
     <section id="data_pre" class="section">
       <h2>Dataset Preparation & Annotation</h2>
-      <p>
-        The <strong>FeEcho4D</strong> dataset comprises <strong>1,845</strong> 3D radial ultrasound volumes collected from <strong>52</strong> unique subjects 
-        across various gestational ages. Each volume represents a full cardiac cycle with high temporal resolution, including diverse 
-        fetal positions and orientations to reflect real-world clinical variability.
-      </p>
 
       <!-- Step 1 -->
-      <h4 class="step-title">Step 1: Radial Resampling</h4>
-      <img src="Image/Dataset-Step1_Radial_Resampling.png" width="1000" class="mx-auto d-block" alt="Radial Resampling" />
+      <h4 class="step-title">Step 1: Data extraction</h4>
+      <p>
+       Raw spatiotemporal image correlation (STIC) acquisitions were retrieved directly from the fetal echocardiography system and processed using 
+       4DView software (GE Healthcare, Chicago, IL, USA) to export volumetric datasets. 
+       This step ensures that the original 4D ultrasound information, including both spatial and temporal components, is preserved for subsequent analysis.
+      <div style="display: flex; justify-content: center; gap: 1px; align-items: center;">
+        <video src="Image/Dataset-Step1-Data_extraction-1.mov" autoplay loop muted playsinline style="height: 370px;"></video>
+        <video src="Image/Dataset-Step1-Data_extraction-2.mov" autoplay loop muted playsinline style="height: 370px;"></video>
+      </div>
+      <p class="figure-caption">
+        <strong>Figure:</strong> Step1 - Raw STIC fetal echocardiography volume exported via 4DView software and corresponding radial slices at selected time frames.
+        </p>
+      
+
+      <!-- Step 2 -->
+      <h4 class="step-title">Step 2: Radial slice extraction</h4>
       <p>
         All volumes are radially resampled, aligning the center to the 2D image origin. This creates uniformly sampled S radial slices 
         (H × W) at fixed angular intervals, forming structured 3D volumes for consistent downstream analysis.
       </p>
+      <video class="center" width="1000" controls autoplay muted loop>
+        <source src="Image/Dataset-Step2-Radial_Resampling.MOV" type="video/mp4">
+      </video>
+      <p class="figure-caption">
+        <strong>Figure:</strong> Step2 - Radial slice extraction at a given rotation angle (θ) with corresponding ultrasound image and myocardium mask.
+        </p>
 
       <!-- Algorithm block: Radial Slice Extraction -->
       <details class="rounded-lg border p-3 my-3" style="background:#fafafa;">
@@ -416,27 +431,33 @@
         </div>
       </details>
 
-      <!-- Step 2 -->
-      <h5 class="step-title">Step 2: Manual Segmentation with Custom Application</h5>
-      <img src="Image/Dataset-Step2-Segmentation_App.gif" width="1000" class="mx-auto d-block" alt="Manual Annotation" />
+      <!-- Step 3 -->
+      <h5 class="step-title">Step 3: Manual delineation</h5>
       <p>
         Using a custom annotation tool, experts mark points along the left ventricular (LV) myocardium and cavity. Given ultrasound 
         noise, users adjust both spatially and temporally to ensure accuracy, refining adjacent slices for smooth contours. All 
         annotations undergo multi-round review and cardiologist validation 
         (<a href="https://github.com/haziqshahard/SegmentationApp" target="_blank">details in our SegmentationApp</a>).
       </p>
+      <img src="Image/Dataset-Step3-Segmentation_App.gif" width="1000" class="mx-auto d-block" alt="Manual Annotation" />
+      <p class="figure-caption">
+        <strong>Figure:</strong> Step3 - Manual delineation of myocardium at ED and ES by SegmentationApp.
+        </p>
 
-      <!-- Step 3 -->
-      <h5 class="step-title">Step 3: Motion Tracking and Correction</h5>
-      <video class="center" width="1000" controls autoplay muted loop>
-        <source src="Image/Dataset-Step3_Motion_Tracking.mp4" type="video/mp4">
-      </video>
+      <!-- Step 4 -->
+      <h5 class="step-title">Step 4: Motion tracking & Manual refinement</h5>
       <p>
         FeEcho4D generates dense cardiac masks by propagating sparse end-diastolic and end-systolic annotations using
         <strong><a href="https://www.nature.com/articles/s41598-020-75525-4" target="_blank">B-spline Fourier (BSF) motion model</a></strong>, 
         which blends local and global deformations and regularizes trajectories to capture periodic motion. This ensures temporally 
         coherent, anatomically consistent masks, further refined with <strong>skeleton-based width correction</strong> to maintain uniform myocardial thickness, and all results are manually reviewed for accuracy.
       </p>
+      <video class="center" width="1000" controls autoplay muted loop>
+        <source src="Image/Dataset-Step4-Motion_Tracking.MOV" type="video/mp4">
+      </video>
+      <p class="figure-caption">
+        <strong>Figure:</strong> Step4 - Motion-guided mask propagation across all time frames.
+        </p>
 
       <!-- Algorithm block: BSF-Based Temporal Mask Propagation -->
       <details class="rounded-lg border p-3 my-3" style="background:#fafafa;">
@@ -557,9 +578,8 @@
     <section id="data_rec" class="section">
       <h2>3D Reconstruction & Biomarker Computation</h2>
 
-      <!-- Step 4 -->
+      <!-- Step 5 -->
       <h5 class="step-title">3D Reconstruction with GHD</h5>
-      <img src="Image/Dataset-Step4_GHD.png" width="1000" class="mx-auto d-block" alt="GHD Reconstruction" />
       <p>
         The full 3D+t segmentations are reconstructed into smooth, temporally consistent left ventricular (LV) meshes using 
         <strong>Graph Harmonic Deformation (GHD)</strong> 
@@ -567,6 +587,10 @@
         The meshes are further processed with <strong>Differentiable Voxelization & Slicing (DVS)</strong>, enabling differentiable conversion 
         to voxel grids and slices for precise dynamic metrics and seamless integration with learning-based models.
       </p>
+      <img src="Image/Dataset-Step5-GHD.png" width="1000" class="mx-auto d-block" alt="GHD Reconstruction" />
+      <p class="figure-caption">
+        <strong>Figure:</strong> Step5 - Slice-to-volume reconstruction using DVS with GHD mesh fitting.
+        </p>
 
       <!-- Algorithm block: GHD-Based 3D Mesh Reconstruction -->
       <details class="rounded-lg border p-3 my-3" style="background:#fafafa;">
@@ -615,19 +639,20 @@
           <p><strong>Return</strong>: \( \{\mathcal{M}_t\}_{t=1}^T \)</p>
         </div>
       </details>
-
-      <video class="center" width="1000" controls autoplay muted loop>
-        <source src="Image/Dataset-Reconstruction_Result.MOV" type="video/mp4">
-      </video>
       <p>
         Each dataset frame includes expert-validated masks (LV, MYO) and metadata (gestational age, cardiac phase indices, acquisition 
         parameters, fetal biometry), enabling research in segmentation, tracking, motion analysis, reconstruction, and clinical functional 
         assessment.
       </p>
-
+      <video class="center" width="1000" controls autoplay muted loop>
+        <source src="Image/Dataset-Reconstruction_Result.MOV" type="video/mp4">
+      </video>
+      <p class="figure-caption">
+        <strong>Figure:</strong> 3D+t reconstruction results.
+        </p>
+      
       <!-- Step 5 -->
       <h5 class="step-title">Clinical Metrics Calculation</h5>
-      <img src="Image/Biomarker Computation.png" width="1000" class="mx-auto d-block" alt="Clinical Metrics" />
       <p>
         Clinical metrics including <strong>Stroke Volume (SV)</strong>, <strong>Ejection Fraction (EF)</strong>, 
         <strong>Global Longitudinal Strain (GLS)</strong>, and <strong>Global Circumferential Strain (GCS)</strong> 
@@ -636,6 +661,10 @@
         and mid-ventricular circumferences across representative planes or cross-sections, excluding 
         extreme outliers for robustness.
       </p>
+      <img src="Image/Biomarker Computation.png" width="1000" class="mx-auto d-block" alt="Clinical Metrics" />
+      <p class="figure-caption">
+        <strong>Figure:</strong> Computation of GLS, GCS, EF, and SV from fitted myocardium meshes at ED and ES.
+        </p>
 
       <!-- Algorithm block: Clinical Metrics Computation -->
       <details class="rounded-lg border p-3 my-3" style="background:#fafafa;">
