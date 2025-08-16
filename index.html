@@ -312,13 +312,10 @@
       <img src="Image/Introduction.png" alt="Intro image" 
      style="display:block; margin:0 auto; max-width:100%; height:auto;">
       <p class="figure-caption">
-        <strong>Figure:</strong> Overview of the FeEcho4D dataset creation pipeline (A) Radial data preparation and (B) 4D reconstruction of fetal myocardial segmentation.
+        <strong>Figure:</strong> Overview of the FeEcho4D dataset generation pipeline (A) Radial data preparation and (B) 4D reconstruction of the fetal left ventricular heart.
         </p>
 
-      <p><strong>FeEcho4D</strong> is the first benchmark dataset for fetal radial echocardiography with full 4D (3D+t) temporal coverage, designed to advance 
-        prenatal cardiac functional assessment and support clinical translation. It contains over <strong>1,845 expert-annotated 3D radial volumes</strong> from 52 subjects, 
-        covering diverse gestational ages and fetal poses to capture the complexity of real-world imaging. <em>Additional segmented cases are in progress and will be published in future releases</em>.
-        FeEcho4D enables reliable segmentation, motion estimation, and 3D reconstruction for AI-driven fetal cardiac analysis. As illustrated in the figure above, dataset development involves six key steps:</p>
+        <p><strong>FeEcho4D</strong> is the first benchmark dataset for fetal echocardiography with full 4D (3D over time) left ventricular meshes, designed to advance prenatal cardiac functional assessment and support clinical translation. It contains over <strong>1,845 expert-annotated 3D volumes</strong> from 52 subjects, covering diverse gestational ages, disease conditions, and fetal poses to capture the complexity of real-world imaging. <em>Additional segmented cases are in progress and will be published in future releases</em>. FeEcho4D enables reliable segmentation, motion estimation, and 3D reconstruction for AI-driven fetal cardiac analysis. As illustrated in the figure above, the development of the dataset from raw 4D volumes to 4D mesh generation proceeds through six key steps:</p>
 
           <ol>
               <li><strong>Data extraction</strong> from raw STIC acquisitions using <em>4DView</em> software (GE Healthcare, Chicago, IL, USA).</li>
