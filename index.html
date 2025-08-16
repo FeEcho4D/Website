@@ -258,50 +258,43 @@
       <style>
         .header-wrap { 
           position: relative; 
-          background: #f9f9f9;
-          min-height: 100vh; 
-          overflow: hidden; 
-          display: flex; 
-          justify-content: center; 
-          align-items: center; 
+          background: #f9f9f9;   /* light background */
+          width: 100%;
           text-align: center; 
           color: black;
+          overflow: hidden;
         }
       
         .header-wrap img {
-          position: absolute; inset: 0;
-          margin: auto;
-          max-width: 90%; 
-          max-height: 60vh;   /* 👈 limits the image size */
-          object-fit: contain;
-          pointer-events: none; 
-          user-select: none;
+          display: block;        /* removes inline gap */
+          width: 100%;           /* scale image to container width */
+          height: auto;          /* keep natural aspect ratio */
         }
       
-        .header-content { 
-          position: relative; 
-          z-index: 1; 
-          padding: 2vw;
+        .header-content {
+          position: absolute;    /* overlay text on the image */
+          top: 50%; left: 50%;
+          transform: translate(-50%, -50%);  /* center text on image */
+          color: white;
+          text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+          padding: 1rem;
         }
       
         .header-content h1 {
-          font-size: 6vw; 
+          font-size: 4vw; 
           font-weight: bold; 
-          text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
           margin: 0;
         }
       
         .header-content h1 span {
-          font-size: 2vw; 
-          font-weight: normal; 
-          text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+          font-size: 1.5vw; 
+          font-weight: normal;
         }
       
         .header-content p {
-          font-size: 2.5vw; 
+          font-size: 1.8vw; 
           font-weight: 500; 
-          text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
-          margin-top: 2vh;
+          margin-top: 1rem;
         }
       </style>
       
