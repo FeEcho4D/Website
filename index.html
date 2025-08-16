@@ -472,7 +472,11 @@
         annotations undergo multi-round review and cardiologist validation 
         (<a href="https://github.com/haziqshahard/SegmentationApp" target="_blank">details in our SegmentationApp</a>).
       </p>
-      <img src="Image/Dataset-Step3-Segmentation_App.gif" width="1000" class="mx-auto d-block" alt="Manual Annotation" />
+      <div style="max-width:1000px; margin:0 auto;">
+        <img src="Image/Dataset-Step3-Segmentation_App.gif" 
+             alt="Manual Annotation"
+             style="display:block; width:100%; height:auto; border-radius:6px;">
+      </div>
       <p class="figure-caption">
         <strong>Figure:</strong> Step3 - Manual delineation of myocardium at ED and ES by SegmentationApp.
         </p>
@@ -485,9 +489,13 @@
         which blends local and global deformations and regularizes trajectories to capture periodic motion. This ensures temporally 
         coherent, anatomically consistent masks, further refined with <strong>skeleton-based width correction</strong> to maintain uniform myocardial thickness, and all results are manually reviewed for accuracy.
       </p>
-      <video class="center" width="1000" controls autoplay muted loop>
-        <source src="Image/Dataset-Step4-Motion_Tracking.mov" type="video/mp4">
-      </video>
+      <div style="max-width:1000px; margin:0 auto;">
+        <video controls autoplay muted loop 
+               style="display:block; width:100%; height:auto; border-radius:6px;">
+          <source src="Image/Dataset-Step4-Motion_Tracking.mov" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <p class="figure-caption">
         <strong>Figure:</strong> Step4 - Motion-guided mask propagation across all time frames.
         </p>
@@ -620,7 +628,11 @@
         The meshes are further processed with <strong>Differentiable Voxelization & Slicing (DVS)</strong>, enabling differentiable conversion 
         to voxel grids and slices for precise dynamic metrics and seamless integration with learning-based models.
       </p>
-      <img src="Image/Dataset-Step5-GHD.png" width="1000" class="mx-auto d-block" alt="GHD Reconstruction" />
+      <div style="max-width:1000px; margin:0 auto;">
+        <img src="Image/Dataset-Step5-GHD.png" 
+             alt="GHD Reconstruction"
+             style="display:block; width:100%; height:auto; border-radius:6px;">
+      </div>
       <p class="figure-caption">
         <strong>Figure:</strong> Step5 - Slice-to-volume reconstruction using DVS with GHD mesh fitting.
         </p>
@@ -677,9 +689,13 @@
         parameters, fetal biometry), enabling research in segmentation, tracking, motion analysis, reconstruction, and clinical functional 
         assessment.
       </p>
-      <video class="center" width="1000" controls autoplay muted loop>
-        <source src="Image/Dataset-Reconstruction_Result.mov" type="video/mp4">
-      </video>
+      <div style="max-width:1000px; margin:0 auto;">
+        <video controls autoplay muted loop 
+               style="display:block; width:100%; height:auto; border-radius:6px;">
+          <source src="Image/Dataset-Reconstruction_Result.mov" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <p class="figure-caption">
         <strong>Figure:</strong> 3D+t reconstruction results.
         </p>
@@ -694,7 +710,11 @@
         and mid-ventricular circumferences across representative planes or cross-sections, excluding 
         extreme outliers for robustness.
       </p>
-      <img src="Image/Biomarker Computation.png" width="1000" class="mx-auto d-block" alt="Clinical Metrics" />
+      <div style="max-width:1000px; margin:0 auto;">
+        <img src="Image/Biomarker Computation.png" 
+             alt="Clinical Metrics"
+             style="display:block; width:100%; height:auto; border-radius:6px;">
+      </div>
       <p class="figure-caption">
         <strong>Figure:</strong> Computation of GLS, GCS, EF, and SV from fitted myocardium meshes at ED and ES.
         </p>
