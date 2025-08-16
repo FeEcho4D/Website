@@ -876,35 +876,5 @@
   <!-- JS libraries -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Footer -->
-  <footer class="text-center mt-5 mb-4">
-    <p>&copy; 2025 FeEcho4D Project. Developed by Qifeng Wang.</p>
-    <p>Total Visitors: <span id="visits">—</span></p>
-  </footer>
-
-  <!-- Visitor counter script -->
-  <script>
-    // Use a unique namespace + key for your site
-    const NAMESPACE = "feecho4d";  
-    const KEY = "homepage";
-
-    fetch(`https://api.countapi.xyz/hit/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(KEY)}`)
-      .then(res => res.json())
-      .then(res => {
-        document.getElementById('visits').innerText = res.value;
-      })
-      .catch(() => {
-        document.getElementById('visits').innerText = 'N/A';
-      });
-  </script>
-
-  <!-- JS libraries -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
-
-
 </body>
 </html>
