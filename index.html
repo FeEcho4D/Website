@@ -473,10 +473,7 @@
       <!-- Step 4 -->
       <h5 class="step-title">Motion Tracking & Manual Refinement Step</h5>
       <p>
-        FeEcho4D generates dense cardiac masks by propagating sparse end-diastolic and end-systolic annotations using
-        <strong><a href="https://www.nature.com/articles/s41598-020-75525-4" target="_blank">B-spline Fourier (BSF) motion model</a></strong>, 
-        which blends local and global deformations and regularizes trajectories to capture periodic motion. This ensures temporally 
-        coherent, anatomically consistent masks, further refined with <strong>skeleton-based width correction</strong> to maintain uniform myocardial thickness, and all results are manually reviewed for accuracy.
+        FeEcho4D generates dense cardiac masks by propagating sparse ED and ES annotations using <strong><a href="https://www.nature.com/articles/s41598-020-75525-4" target="_blank">B-spline Fourier (BSF) motion model</a></strong> (Algorithm 2), which blends local and global deformations and regularizes trajectories to capture periodic motion (as shown in the following figure). This ensures temporally coherent, anatomically consistent masks, further refined with <strong>skeleton-based width correction</strong> (Algorithm 3) to maintain uniform myocardial thickness, and all results are manually reviewed for accuracy.
       </p>
 
       <!-- Algorithm block: BSF-Based Temporal Mask Propagation -->
