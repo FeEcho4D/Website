@@ -374,8 +374,7 @@
       <!-- Step 2 -->
       <h4 class="step-title">Radial Slice Extraction Step</h4>
       <p>
-        All volumes are radially resampled, aligning the center to the 2D image origin. This creates uniformly sampled S radial slices 
-        (H × W) at fixed angular intervals, forming structured 3D volumes for consistent downstream analysis.
+        All volumes were radially resampled using Algorithm 1, as illustrated in the figure below. This procedure generates a set of uniformly sampled radial slices (H×W) at fixed angular intervals, which together form structured radial 3D volumes. Compared to conventional SAX and LAX views, where the left ventricular shape often transitions from an apparent U-shape to blob-like contours, radial slices consistently preserve a U-shaped anatomy across depths. This structural consistency greatly facilitates accurate and efficient manual annotation, as shown in the segmentation of all S slices in the figure below.  
       </p>
 
         <!-- Algorithm block: Radial Slice Extraction -->
