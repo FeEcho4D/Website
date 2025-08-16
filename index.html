@@ -377,24 +377,27 @@
        Raw spatiotemporal image correlation (STIC) acquisitions were retrieved directly from the fetal echocardiography system and processed using 
        4DView software (GE Healthcare, Chicago, IL, USA) to export volumetric datasets. 
        This step ensures that the original 4D ultrasound information, including both spatial and temporal components, is preserved for subsequent analysis.
-       <div style="display:grid; grid-auto-flow:column; gap:10px; justify-content:center; align-items:center; flex-wrap:wrap;">
-        <!-- Left: Video -->
-        <div style="width:min(48vw, 600px);">
-          <div style="aspect-ratio:16/9;">
-            <video src="Image/Dataset-Step1-Data_extraction-1.mov"
-                   autoplay loop muted playsinline
-                   style="width:100%; height:100%; object-fit:contain; display:block; border-radius:6px;"></video>
+       <div style="display:flex; justify-content:center; width:100%;">
+        <div style="display:grid; grid-auto-flow:column; gap:10px; width:fit-content;">
+          <!-- Video -->
+          <div style="width:clamp(280px, 45vw, 600px);">
+            <div style="aspect-ratio:16/9;">
+              <video src="Image/Dataset-Step1-Data_extraction-1.mov"
+                     autoplay loop muted playsinline
+                     style="width:100%; height:100%; object-fit:contain; display:block; border-radius:6px;"></video>
+            </div>
+          </div>
+      
+          <!-- GIF -->
+          <div style="width:clamp(280px, 45vw, 600px);">
+            <div style="aspect-ratio:16/9;">
+              <img src="Image/Dataset-Step1-Data_extraction-2.gif"
+                   alt="Data extraction step"
+                   style="width:100%; height:100%; object-fit:contain; display:block; border-radius:6px;">
+            </div>
           </div>
         </div>
-        <!-- Right: GIF -->
-        <div style="width:min(48vw, 600px);">
-          <div style="aspect-ratio:16/9;">
-            <img src="Image/Dataset-Step1-Data_extraction-2.gif"
-                 alt="Data extraction step"
-                 style="width:100%; height:100%; object-fit:contain; display:block; border-radius:6px;">
-          </div>
-        </div>
-      </div>
+      </div>      
       <p class="figure-caption">
         <strong>Figure:</strong> Step1 - Raw STIC fetal echocardiography volume exported via 4DView software and corresponding radial slices at selected time frames.
         </p>
