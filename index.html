@@ -468,24 +468,16 @@
         <strong>Figure:</strong> Manual delineation of myocardium at ED and ES by SegmentationApp.
         </p>
 
+
+
       <!-- Step 4 -->
-      <h5 class="step-title">Step 4: Motion tracking & Manual refinement</h5>
+      <h5 class="step-title">Motion Tracking & Manual Refinement Step</h5>
       <p>
         FeEcho4D generates dense cardiac masks by propagating sparse end-diastolic and end-systolic annotations using
         <strong><a href="https://www.nature.com/articles/s41598-020-75525-4" target="_blank">B-spline Fourier (BSF) motion model</a></strong>, 
         which blends local and global deformations and regularizes trajectories to capture periodic motion. This ensures temporally 
         coherent, anatomically consistent masks, further refined with <strong>skeleton-based width correction</strong> to maintain uniform myocardial thickness, and all results are manually reviewed for accuracy.
       </p>
-      <div style="max-width:1000px; margin:0 auto;">
-        <video controls autoplay muted loop 
-               style="display:block; width:100%; height:auto; border-radius:6px;">
-          <source src="Image/Dataset-Step4-Motion_Tracking.mov" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <p class="figure-caption">
-        <strong>Figure:</strong> Step4 - Motion-guided mask propagation across all time frames.
-        </p>
 
       <!-- Algorithm block: BSF-Based Temporal Mask Propagation -->
       <details class="rounded-lg border p-3 my-3" style="background:#fafafa;">
@@ -601,6 +593,17 @@
       };
     </script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+    <div style="max-width:1000px; margin:0 auto;">
+      <video controls autoplay muted loop 
+             style="display:block; width:100%; height:auto; border-radius:6px;">
+        <source src="Image/Dataset-Step4-Motion_Tracking.mov" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <p class="figure-caption">
+      <strong>Figure:</strong> Motion-guided mask propagation across all time frames.
+      </p>
 
     <!-- 3D Reconstruction & Biomarker Computation -->
     <section id="data_rec" class="section">
