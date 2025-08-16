@@ -392,9 +392,13 @@
         All volumes are radially resampled, aligning the center to the 2D image origin. This creates uniformly sampled S radial slices 
         (H × W) at fixed angular intervals, forming structured 3D volumes for consistent downstream analysis.
       </p>
-      <video class="center" width="1000" controls autoplay muted loop>
-        <source src="Image/Dataset-Step2-Radial_Resampling.mov" type="video/mp4">
-      </video>
+      <div style="max-width:1000px; margin:0 auto;">
+        <video controls autoplay muted loop 
+               style="display:block; width:100%; height:auto; border-radius:6px;">
+          <source src="Image/Dataset-Step2-Radial_Resampling.mov" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <p class="figure-caption">
         <strong>Figure:</strong> Step2 - Radial slice extraction at a given rotation angle (θ) with corresponding ultrasound image and myocardium mask.
         </p>
