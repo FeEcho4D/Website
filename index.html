@@ -372,11 +372,76 @@
       
 
       <!-- Step 2 -->
-      <h4 class="step-title">Step 2: Radial slice extraction</h4>
+      <h4 class="step-title">Radial Slice Extraction Step</h4>
       <p>
         All volumes are radially resampled, aligning the center to the 2D image origin. This creates uniformly sampled S radial slices 
         (H × W) at fixed angular intervals, forming structured 3D volumes for consistent downstream analysis.
       </p>
+
+        <!-- Algorithm block: Radial Slice Extraction -->
+        <details class="rounded-lg border p-3 my-3" style="background:#fafafa;">
+          <summary style="cursor:pointer;"><strong>Algorithm 1 — Radial Slice Extraction</strong></summary>
+          <div style="margin-top:10px; line-height:1.55;">
+            <p>
+              <em>Inputs</em>: 3D volume \( \mathbf{V}\in \mathbb{R}^{H \times W \times D} \), spacing \( \mathbf{S}=[s_x,s_y,s_z] \), angle set \( \Theta \).<br>
+              <em>Outputs</em>: Radial slices \( \{ I_\theta \mid \theta \in \Theta \},\; I_\theta \in \mathbb{R}^{H \times W} \).
+            </p>
+            <ol>
+              <li>Select middle slice index \( \mathbf{M} \) along z and rotation center \( \mathbf{C}=[C_x,C_y] \) on that slice (LV center).</li>
+              <li>
+                Generate coordinate mesh \( \mathbf{X}=\{(x_i,y_j,z_k)\} \) with voxel spacing:
+                \[
+                \begin{aligned}
+                x_i &= i\cdot s_x,\quad i=1,\dots,W \\
+                y_j &= j\cdot s_y,\quad j=1,\dots,H \\
+                z_k &= k\cdot s_z,\quad k=1,\dots,D
+                \end{aligned}
+                \]
+              </li>
+              <li>
+                Translate to center:
+                \[
+                \mathbf{X}^C_p = \mathbf{X}_p - [\,C_x s_x,\; C_y s_y,\; M s_z\,],\quad p\in\{i,j,k\}.
+                \]
+              </li>
+              <li>
+                For each \( \theta \in \Theta \):
+                <ol type="a">
+                  <li>
+                    Define y-axis rotation
+                    \[
+                    R_y(\theta^{\mathrm r})=
+                    \begin{bmatrix}
+                    \cos\theta^{\mathrm r} & 0 & \sin\theta^{\mathrm r}\\
+                    0&1&0\\
+                    -\sin\theta^{\mathrm r}&0&\cos\theta^{\mathrm r}
+                    \end{bmatrix},\quad
+                    \theta^{\mathrm r}=\theta\cdot\frac{\pi}{180}.
+                    \]
+                  </li>
+                  <li>
+                    Rotate and inverse-translate:
+                    \[
+                    \mathbf{X}^{\mathrm{rot}}=R_y(\theta^{\mathrm r})\,\mathbf{X}^C,\qquad
+                    \mathbf{X}^{\mathrm{target}}_p=\mathbf{X}^{\mathrm{rot}}_p+[\,C_x s_x,\; C_y s_y,\; M s_z\,].
+                    \]
+                  </li>
+                  <li>
+                    Interpolate:
+                    \[
+                    V^{\mathrm{rot}}(i,j,k)=\mathrm{interp3}\!\left(\mathbf{V},\;\mathbf{X}^{\mathrm{target}}\right).
+                    \]
+                  </li>
+                  <li>Slice at \( k=M \) to obtain \( I_\theta = V^{\mathrm{rot}}(:,:,M) \).</li>
+                </ol>
+              </li>
+            </ol>
+          </div>
+        </details>
+
+
+
+
       <div style="max-width:1000px; margin:0 auto;">
         <video controls autoplay muted loop 
                style="display:block; width:100%; height:auto; border-radius:6px;">
@@ -385,69 +450,10 @@
         </video>
       </div>
       <p class="figure-caption">
-        <strong>Figure:</strong> Step2 - Radial slice extraction at a given rotation angle (θ) with corresponding ultrasound image and myocardium mask.
+        <strong>Figure:</strong> Radial slice extraction at a given rotation angle (θ) with corresponding ultrasound image and myocardium mask.
         </p>
 
-      <!-- Algorithm block: Radial Slice Extraction -->
-      <details class="rounded-lg border p-3 my-3" style="background:#fafafa;">
-        <summary style="cursor:pointer;"><strong>Algorithm 1 — Radial Slice Extraction</strong></summary>
-        <div style="margin-top:10px; line-height:1.55;">
-          <p>
-            <em>Inputs</em>: 3D volume \( \mathbf{V}\in \mathbb{R}^{H \times W \times D} \), spacing \( \mathbf{S}=[s_x,s_y,s_z] \), angle set \( \Theta \).<br>
-            <em>Outputs</em>: Radial slices \( \{ I_\theta \mid \theta \in \Theta \},\; I_\theta \in \mathbb{R}^{H \times W} \).
-          </p>
-          <ol>
-            <li>Select middle slice index \( \mathbf{M} \) along z and rotation center \( \mathbf{C}=[C_x,C_y] \) on that slice (LV center).</li>
-            <li>
-              Generate coordinate mesh \( \mathbf{X}=\{(x_i,y_j,z_k)\} \) with voxel spacing:
-              \[
-              \begin{aligned}
-              x_i &= i\cdot s_x,\quad i=1,\dots,W \\
-              y_j &= j\cdot s_y,\quad j=1,\dots,H \\
-              z_k &= k\cdot s_z,\quad k=1,\dots,D
-              \end{aligned}
-              \]
-            </li>
-            <li>
-              Translate to center:
-              \[
-              \mathbf{X}^C_p = \mathbf{X}_p - [\,C_x s_x,\; C_y s_y,\; M s_z\,],\quad p\in\{i,j,k\}.
-              \]
-            </li>
-            <li>
-              For each \( \theta \in \Theta \):
-              <ol type="a">
-                <li>
-                  Define y-axis rotation
-                  \[
-                  R_y(\theta^{\mathrm r})=
-                  \begin{bmatrix}
-                  \cos\theta^{\mathrm r} & 0 & \sin\theta^{\mathrm r}\\
-                  0&1&0\\
-                  -\sin\theta^{\mathrm r}&0&\cos\theta^{\mathrm r}
-                  \end{bmatrix},\quad
-                  \theta^{\mathrm r}=\theta\cdot\frac{\pi}{180}.
-                  \]
-                </li>
-                <li>
-                  Rotate and inverse-translate:
-                  \[
-                  \mathbf{X}^{\mathrm{rot}}=R_y(\theta^{\mathrm r})\,\mathbf{X}^C,\qquad
-                  \mathbf{X}^{\mathrm{target}}_p=\mathbf{X}^{\mathrm{rot}}_p+[\,C_x s_x,\; C_y s_y,\; M s_z\,].
-                  \]
-                </li>
-                <li>
-                  Interpolate:
-                  \[
-                  V^{\mathrm{rot}}(i,j,k)=\mathrm{interp3}\!\left(\mathbf{V},\;\mathbf{X}^{\mathrm{target}}\right).
-                  \]
-                </li>
-                <li>Slice at \( k=M \) to obtain \( I_\theta = V^{\mathrm{rot}}(:,:,M) \).</li>
-              </ol>
-            </li>
-          </ol>
-        </div>
-      </details>
+    
 
       <!-- Step 3 -->
       <h5 class="step-title">Step 3: Manual delineation</h5>
