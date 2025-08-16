@@ -609,11 +609,7 @@
       <!-- Step 5 -->
       <h5 class="step-title">3D Reconstruction with GHD</h5>
       <p>
-        The full 3D+t segmentations are reconstructed into smooth, temporally consistent left ventricular (LV) meshes using 
-        <strong>Graph Harmonic Deformation (GHD)</strong> 
-        (<a href="https://github.com/Luo-Yihao/GHDHeart" target="_blank">details in our teamwork: GHD</a>). 
-        The meshes are further processed with <strong>Differentiable Voxelization & Slicing (DVS)</strong>, enabling differentiable conversion 
-        to voxel grids and slices for precise dynamic metrics and seamless integration with learning-based models.
+        The 3D over time left ventricular meshes are reconstructed into smooth, temporally consistent meshes using <strong>Graph Harmonic Deformation (GHD)</strong> (<a href="https://github.com/Luo-Yihao/GHDHeart" target="_blank">details in our teamwork: GHD</a>). The meshes are further processed with <strong>Differentiable Voxelization & Slicing (DVS)</strong> (as shown in the following figure below) (details in Algorithm 4), enabling differentiable conversion to voxel grids and slices for precise dynamic metrics and seamless integration with learning-based models. The resulting 4D meshes of ten different example patients are shown in the following video. 
       </p>
 
       <!-- Algorithm block: GHD-Based 3D Mesh Reconstruction -->
