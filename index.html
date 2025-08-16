@@ -255,17 +255,46 @@
       <!-- <img src="Image/Logo/4DFetal_Logo.png" alt="Left Logo" class="side-image left-image"> -->
 
       <!-- Title and subtitle -->
-      <div class="header-text" 
-      style="background-image: url('Image/Logo/Yaplab_Logo.png');
-             background-size: cover; 
-             background-position: center; 
-             background-repeat: no-repeat;
-             padding: 40px; 
-             color: white;">
-      <h1 style="font-size: 61px; font-weight: bold;">
-        FeEcho4D <span style="font-size: 20px; font-weight: normal;">-Fetal Echocardiography 4D</span>
-      </h1>
-      <p>The First Benchmark Dataset For Fetal Radial Echocardiography With Full Temporal Coverage</p>
+      <style>
+        .header-container {
+          position: relative;
+          width: 100%;
+          height: 400px; /* adjust header height */
+          overflow: hidden;
+          color: white;
+        }
+      
+        .header-container video {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover; /* scale video to fill the area */
+          z-index: -1;       /* keep video behind the text */
+        }
+      
+        .header-text {
+          position: relative;
+          z-index: 1;   /* text above the video */
+          padding: 40px;
+          background: rgba(0,0,0,0.4); /* optional: semi-transparent overlay for readability */
+          border-radius: 12px;         /* optional */
+        }
+      </style>
+      
+      <div class="header-container">
+        <video autoplay muted loop playsinline>
+          <source src="Image/Dataset-Reconstruction_Result.mov" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      
+        <div class="header-text">
+          <h1 style="font-size: 61px; font-weight: bold;">
+            FeEcho4D <span style="font-size: 20px; font-weight: normal;">-Fetal Echocardiography 4D</span>
+          </h1>
+          <p>The First Benchmark Dataset For Fetal Radial Echocardiography With Full Temporal Coverage</p>
+        </div>
       </div>
 
       <!-- Optional right emblem -->
