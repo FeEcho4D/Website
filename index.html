@@ -265,12 +265,22 @@
              text-align: center;
              color: white;
              position: relative;">
-   <h1 style="font-size: 72px; font-weight: bold; text-shadow: 2px 2px 8px rgba(0,0,0,0.6);">
-     FeEcho4D
-   </h1>
+   <h1 style="font-size: 72px; font-weight: bold; 
+   color: red; 
+   text-shadow: 2px 2px 8px rgba(0,0,0,0.6); 
+   animation: blink 1s infinite;">
+    FeEcho4D
+    </h1>
+
+    <style>
+    @keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+    }
+    </style>
   
    <p style="font-size: 24px; font-weight: 500; text-shadow: 1px 1px 6px rgba(0,0,0,0.7);">
-     The First Benchmark Dataset For Fetal Radial Echocardiography With Full Temporal Coverage
+    The First Benchmark 4D Fetal Echocardiography Dataset with 4D LV Meshes
    </p>
  </div>
  
