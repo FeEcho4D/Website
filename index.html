@@ -615,14 +615,6 @@
         The meshes are further processed with <strong>Differentiable Voxelization & Slicing (DVS)</strong>, enabling differentiable conversion 
         to voxel grids and slices for precise dynamic metrics and seamless integration with learning-based models.
       </p>
-      <div style="max-width:1000px; margin:0 auto;">
-        <img src="Image/Dataset-Step5-GHD.png" 
-             alt="GHD Reconstruction"
-             style="display:block; width:100%; height:auto; border-radius:6px;">
-      </div>
-      <p class="figure-caption">
-        <strong>Figure:</strong> Step5 - Slice-to-volume reconstruction using DVS with GHD mesh fitting.
-        </p>
 
       <!-- Algorithm block: GHD-Based 3D Mesh Reconstruction -->
       <details class="rounded-lg border p-3 my-3" style="background:#fafafa;">
@@ -671,11 +663,17 @@
           <p><strong>Return</strong>: \( \{\mathcal{M}_t\}_{t=1}^T \)</p>
         </div>
       </details>
-      <p>
-        Each dataset frame includes expert-validated masks (LV, MYO) and metadata (gestational age, cardiac phase indices, acquisition 
-        parameters, fetal biometry), enabling research in segmentation, tracking, motion analysis, reconstruction, and clinical functional 
-        assessment.
-      </p>
+
+      <div style="max-width:1000px; margin:0 auto;">
+        <img src="Image/Dataset-Step5-GHD.png" 
+             alt="GHD Reconstruction"
+             style="display:block; width:100%; height:auto; border-radius:6px;">
+      </div>
+      <p class="figure-caption">
+        <strong>Figure:</strong> Step5 - Slice-to-volume reconstruction using DVS with GHD mesh fitting.
+        </p>
+
+
       <div style="max-width:1000px; margin:0 auto;">
         <video controls autoplay muted loop 
                style="display:block; width:100%; height:auto; border-radius:6px;">
