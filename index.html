@@ -258,28 +258,24 @@
       <style>
         .header-container {
           position: relative;
-          width: 100%;
-          height: 400px; /* adjust header height */
+          height: 400px;      /* make the section visible */
           overflow: hidden;
-          color: white;
         }
       
         .header-container video {
           position: absolute;
-          top: 0;
-          left: 0;
+          inset: 0;           /* shorthand for top/right/bottom/left:0 */
           width: 100%;
           height: 100%;
-          object-fit: cover; /* scale video to fill the area */
-          z-index: -1;       /* keep video behind the text */
+          object-fit: cover;  /* scale the video to fill */
+          z-index: -1;        /* keep video behind text */
         }
       
         .header-text {
-          position: relative;
-          z-index: 1;   /* text above the video */
+          position: relative; /* ensures text stacks above */
+          color: white;
           padding: 40px;
-          background: rgba(0,0,0,0.4); /* optional: semi-transparent overlay for readability */
-          border-radius: 12px;         /* optional */
+          z-index: 1;
         }
       </style>
       
@@ -296,6 +292,7 @@
           <p>The First Benchmark Dataset For Fetal Radial Echocardiography With Full Temporal Coverage</p>
         </div>
       </div>
+      
 
       <!-- Optional right emblem -->
       <!-- <img src="Image/Logo/Yaplab_Logo.png" alt="Right Logo" class="side-image right-image"> -->
