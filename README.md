@@ -1,7 +1,7 @@
 # 🫀 FeEcho4D Dataset
 
 **FeEcho4D is the first public dataset for 4D radial fetal echocardiography.**
--	🧪 52 subjects, 1,845 annotated 3D volumes, 3M+ annotated 2D slices
+-	🧪 52 subjects, 1,845 annotated 3D volumes, 68k annotated 2D slices
 -	🌀 37 radial views per volume, full 4D coverage
 -	🎯 Manual annotation across the full cardiac cycle, including both ED and ES frames
 - ✅ Clinical metrics: EF, GLS, GCS, EDV, ESV, SV
