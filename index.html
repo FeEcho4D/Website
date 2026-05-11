@@ -414,9 +414,33 @@
 
 		</ul>
         
-      <p>
-        Radial slicing is a promising yet underexplored alternative to conventional Cartesian slicing, short-axis (SAX) and long-axis (LAX) views. By rotating a 2D slicing plane around the left ventricular long axis at fixed angular intervals (θ∈[0,π]), it provides structured coverage of the myocardium from multiple orientations. Compared with SAX and LAX views, radial views are easier to annotate and deliver more uniform anatomical coverage across the heart.
-      </p>  
+		 <p>
+	  To overcome the challenges of 3D/4D annotation, we first introduce 
+	  <strong>radial slicing</strong>, which yields consistent and interpretable 
+	  U-shaped MYO contours, unlike traditional SAX and LAX views. Our radial slicing 
+	  extracts 2D slices by rotating the slicing plane around the LV longitudinal axis 
+	  at fixed angular intervals (θ ∈ [0, π]), providing structured coverage of the 
+	  MYO from multiple orientations. Building upon this representation, our framework 
+	  introduces two key innovations (details in the paper):
+	</p>
+
+	<ul class="limitations-list" style="margin-left: 3rem;">
+
+	  <li>
+		<strong>FeEcho4D:</strong> The first public benchmark dataset for 4D fetal 
+		echocardiography with temporally coherent 4D LV meshes.
+	  </li>
+
+	  <li>
+		<strong>SCOPE-Net:</strong> A 3D LV reconstruction framework over time based 
+		on radial slicing. The framework efficiently transforms the 3D problem into 
+		structured 2D tasks while preserving anatomical plausibility. Importantly, 
+		radial slicing introduces a built-in geometric inductive bias that can be 
+		explicitly modeled as a spatial anatomical prior within the network, unlike 
+		purely data-driven DL models that lack anatomical priors.
+	  </li>
+
+	</ul>
 
       <img src="Image/Introduction.png" alt="Intro image" 
      style="display:block; margin:0 auto; max-width:100%; height:auto;">
