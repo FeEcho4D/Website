@@ -249,69 +249,51 @@
   </div>
 
   <!-- Hero header -->
-<!-- Hero header -->
-<div class="header-section">
-  <div class="header-content">
+  <div class="header-section">
+    <div class="header-content">
+      <!-- Optional left emblem -->
+      <!-- <img src="Image/Logo/4DFetal_Logo.png" alt="Left Logo" class="side-image left-image"> -->
 
-    <!-- Title -->
-    <div class="header-text" 
-    style="
-      background-image: url('Image/Logo/FeEcho.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center top;
-      background-color: #2b2929;
+      <!-- Title and subtitle -->
+      <div class="header-text" 
+      style="background-image: url('Image/Logo/FeEcho.png');
+             background-size: contain;      /* shows whole logo, scaled */
+             background-repeat: no-repeat;
+             background-position: center top;
+             background-color: #2b2929;        /* fallback background */
+             padding: 0px 0px;           /* add enough top/bottom space for logo */
+             text-align: center;
+             color: white;
+             position: relative;">
+   <h1 style="font-size: 80px; font-weight: bold; 
+   color: red; 
+   text-shadow: 2px 2px 8px rgba(0,0,0,0.6); 
+   animation: blink 2s infinite;">
+    FeEcho4D
+    </h1>
 
-      min-height: 420px;
-      padding-top: 300px;
-      padding-bottom: 30px;
+    <style>
+    @keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+    }
+    </style>
+  
+    <p style="font-size: 28px; 
+    font-weight: 500; 
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+    margin-top: 0px; 
+    margin-bottom: 0px;">
+    The First Benchmark Dataset for 4D Fetal Echocardiography with 4D Left Ventricular Meshes  
+  </p>
+ </div>
+ 
+ 
 
-      text-align: center;
-      color: white;
-      position: relative;
-
-      animation: dropIn 1.5s ease-out;
-    ">
-
-      <h1 style="
-        font-size: 72px;
-        font-weight: bold;
-        color: #ff2b2b;
-        text-shadow: 0px 0px 15px rgba(255,0,0,0.6);
-        animation: blink 2s infinite;
-        margin-bottom: 15px;
-        letter-spacing: 2px;
-      ">
-        FeEcho4D
-      </h1>
-
+      <!-- Optional right emblem -->
+      <!-- <img src="Image/Logo/Yaplab_Logo.png" alt="Right Logo" class="side-image right-image"> -->
     </div>
   </div>
-</div>
-
-<style>
-
-/* blinking effect */
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.25; }
-}
-
-/* drop-in animation */
-@keyframes dropIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-60px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-</style>
-  
 
   <!-- Main container -->
   <div class="container">
