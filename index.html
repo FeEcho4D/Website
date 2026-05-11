@@ -381,6 +381,38 @@
 		  <strong>the lack of publicly available 4D datasets</strong> and the complexity of 
 		  volumetric DL algorithms.
 		</p>
+		
+		<p>
+		  Preparing 4D ground-truth annotations for fetal echocardiography is highly challenging, 
+		  particularly for temporally coherent 4D analysis. Several key factors contribute to 
+		  this difficulty:
+		</p>
+
+		<ul class="limitations-list" style="margin-left: 3rem;">
+		  
+		  <li>
+			<strong>High annotation complexity</strong>, requiring accurate and spatially 
+			consistent labeling across slices and time.
+		  </li>
+
+		  <li>
+			<strong>Poor fetal image quality</strong> caused by anisotropic resolution, 
+			acoustic shadowing, and signal dropout.
+		  </li>
+
+		  <li>
+			<strong>Ambiguous anatomical appearance in conventional views</strong>, where 
+			myocardial (MYO) structures transition inconsistently from U-shaped contours to 
+			irregular circular blobs near lateral regions in the short-axis (SAX) and long-axis 
+			(LAX) annotations.
+		  </li>
+
+		  <li>
+			<strong>Difficulty maintaining temporal coherence</strong> across 4D cardiac 
+			sequences during manual annotation.
+		  </li>
+
+		</ul>
         
       <p>
         Radial slicing is a promising yet underexplored alternative to conventional Cartesian slicing, short-axis (SAX) and long-axis (LAX) views. By rotating a 2D slicing plane around the left ventricular long axis at fixed angular intervals (θ∈[0,π]), it provides structured coverage of the myocardium from multiple orientations. Compared with SAX and LAX views, radial views are easier to annotate and deliver more uniform anatomical coverage across the heart.
