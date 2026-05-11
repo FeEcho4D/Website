@@ -455,7 +455,6 @@
 
           
     </section>
-
     <!-- Dataset Preparation & Annotation -->
     <section id="data_pre" class="section">
       <h2>Annotation</h2>
@@ -518,7 +517,7 @@
           </p>
 
       <!-- Step 1 -->
-      <h3 class="step-title">Data Extraction Step</h3>
+      <h3 class="step-title">1. Data Extraction Step</h3>
       <p>
         Raw STIC acquisitions were retrieved directly from the fetal echocardiography system and processed with 4DView software (GE Healthcare, Chicago, IL, USA) to export temporally resolved 3D volumes (illustrated in the figure below). For each temporal extraction, slice number and spacing were kept constant to preserve the spatial–temporal integrity of the original 4D ultrasound data for subsequent analysis. The following figure shows examples of the 3D volume at different times for the same patient. 
        <div style="max-width:1000px; margin:0 auto;">
@@ -534,7 +533,7 @@
       
 
       <!-- Step 2 -->
-      <h4 class="step-title">Radial Slice Extraction Step</h4>
+      <h4 class="step-title">2. Radial Slice Extraction Step</h4>
       <p>
         All volumes were radially resampled using Algorithm 1, as illustrated in the figure below. This procedure generates a set of uniformly sampled radial slices (H×W) at fixed angular intervals, which together form structured radial 3D volumes. Compared to conventional SAX and LAX views, where the left ventricular shape often transitions from an apparent U-shape to blob-like contours, radial slices consistently preserve a U-shaped anatomy across depths. This structural consistency greatly facilitates accurate and efficient manual annotation, as shown in the segmentation of all S slices in the figure below.  
       </p>
@@ -617,7 +616,7 @@
     
 
       <!-- Step 3 -->
-      <h5 class="step-title">Manual Delineation Step</h5>
+      <h5 class="step-title">3. Manual Delineation Step</h5>
       <p>
         Using a custom-built annotation tool (<a href="https://github.com/haziqshahard/SegmentationApp" target="_blank">details in our SegmentationApp</a>), experts manually delineated the left ventricular myocardium and cavity by marking points along their boundaries (see video below). The tool supports 3D volume loading, interactive contour drawing, and real-time quality control through mask overlay. It also provides temporal navigation to capture cardiac motion, particularly valuable in cases affected by acoustic dropout, and annotation toggling for iterative refinement. To ensure accuracy and consistency, all annotations underwent multiple rounds of expert review followed by cardiologist validation.
       </p>
@@ -633,7 +632,7 @@
 
 
       <!-- Step 4 -->
-      <h5 class="step-title">Motion Tracking & Manual Refinement Step</h5>
+      <h5 class="step-title">4-5. Motion Tracking & Manual Refinement Step</h5>
       <p>
         FeEcho4D generates dense cardiac masks by propagating sparse ED and ES annotations using <strong><a href="https://www.nature.com/articles/s41598-020-75525-4" target="_blank">B-spline Fourier (BSF) motion model</a></strong> (Algorithm 2), which blends local and global deformations and regularizes trajectories to capture periodic motion (as shown in the following figure). This ensures temporally coherent, anatomically consistent masks, further refined with <strong>skeleton-based width correction</strong> (Algorithm 3) to maintain uniform myocardial thickness, and all results are manually reviewed for accuracy.
       </p>
@@ -768,11 +767,18 @@
     <!-- 3D Reconstruction & Biomarker Computation -->
     <section id="data_rec" class="section">
       <h2>3D Reconstruction</h2>
+	  <p>
+	  Prior to mesh reconstruction, radial segmentations (manual or SCOPE-Net 
+	  predictions) are embedded into a common 3D coordinate system. Each slice is 
+	  rotated around the LV center according to its acquisition angle, producing a 
+	  sparse cylindrical representation for geometrically consistent mesh 
+	  reconstruction via <strong>Graph Harmonic Deformation (GHD)</strong> (<a href="https://github.com/Luo-Yihao/GHDHeart" target="_blank">details in our teamwork: GHD</a>).
+	</p>
 
       <!-- Step 5 -->
       <h5 class="step-title">3D Reconstruction with GHD</h5>
       <p>
-        The 3D over time left ventricular meshes are reconstructed into smooth, temporally consistent meshes using <strong>Graph Harmonic Deformation (GHD)</strong> (<a href="https://github.com/Luo-Yihao/GHDHeart" target="_blank">details in our teamwork: GHD</a>). The meshes are further processed with <strong>Differentiable Voxelization & Slicing (DVS)</strong> (as shown in the following figure below) (details in Algorithm 4), enabling differentiable conversion to voxel grids and slices for precise dynamic metrics and seamless integration with learning-based models. The resulting 4D meshes of ten different example patients are shown in the following video. 
+        The 3D over time left ventricular meshes are reconstructed into smooth, temporally consistent meshes using GHD. The meshes are further processed with <strong>Differentiable Voxelization & Slicing (DVS)</strong> (as shown in the following figure below) (details in Algorithm 4), enabling differentiable conversion to voxel grids and slices for precise dynamic metrics and seamless integration with learning-based models. The resulting 4D meshes of ten different example patients are shown in the following video. 
       </p>
 
       <!-- Algorithm block: GHD-Based 3D Mesh Reconstruction -->
