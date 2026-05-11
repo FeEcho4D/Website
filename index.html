@@ -240,77 +240,69 @@
 
     <!-- Page navigation -->
     <div class="nav-right-bottom">
-      <a href="#bg">Study Motive</a>
-      <a href="#data_pre">Data Prep</a>
-      <a href="#data_rec">3D Recon & Eval</a>
-      <a href="#data_acc">Data Access</a>
-      <a href="#code">Code & Pubs</a>
+      <a href="#bg">Motivation</a>
+      <a href="#data_pre">Annotation</a>
+      <a href="#data_rec">Reconstruction</a>
+      <a href="#data_acc">Access</a>
+      <a href="#code">Codes</a>
     </div>
   </div>
 
-  <!-- Hero header -->
-<!-- Hero header -->
-<div class="header-section">
-  <div class="header-content">
+	<!-- Hero header -->
+	<div class="header-section">
+	  <div class="header-content">
 
-    <!-- Title -->
-    <div class="header-text" 
-    style="
-      background-image: url('Image/Logo/FeEcho.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center top;
-      background-color: #2b2929;
+		<!-- Title -->
+		<div class="header-text" 
+		style="
+		  background-image: url('Image/Logo/FeEcho.png');
+		  background-size: contain;
+		  background-repeat: no-repeat;
+		  background-position: center top;
+		  background-color: #2b2929;
 
-      min-height: 420px;
-      padding-top: 300px;
-      padding-bottom: 30px;
+		  min-height: 420px;
+		  padding-top: 300px;
+		  padding-bottom: 30px;
 
-      text-align: center;
-      color: white;
-      position: relative;
+		  text-align: center;
+		  color: white;
+		  position: relative;
 
-      animation: dropIn 1.5s ease-out;
-    ">
+		  animation: dropIn 1.5s ease-out;
+		">
 
-      <h1 style="
-        font-size: 72px;
-        font-weight: bold;
-        color: #ff2b2b;
-        text-shadow: 0px 0px 15px rgba(255,0,0,0.6);
-        animation: blink 2s infinite;
-        margin-bottom: 15px;
-        letter-spacing: 2px;
-      ">
-        FeEcho4D
-      </h1>
+		  <h1 style="
+			font-size: 72px;
+			font-weight: bold;
+			color: #ff2b2b;
+			text-shadow: 0px 0px 15px rgba(255,0,0,0.6);
+			margin-bottom: 15px;
+			letter-spacing: 2px;
+		  ">
+			FeEcho4D
+		  </h1>
 
-    </div>
-  </div>
-</div>
+		</div>
+	  </div>
+	</div>
 
-<style>
+	<style>
 
-/* blinking effect */
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.25; }
-}
+	/* drop-in animation */
+	@keyframes dropIn {
+	  0% {
+		opacity: 0;
+		transform: translateY(-60px);
+	  }
 
-/* drop-in animation */
-@keyframes dropIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-60px);
-  }
+	  100% {
+		opacity: 1;
+		transform: translateY(0);
+	  }
+	}
 
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-</style>
+	</style>
   
 
   <!-- Main container -->
