@@ -421,7 +421,7 @@
 	  extracts 2D slices by rotating the slicing plane around the LV longitudinal axis 
 	  at fixed angular intervals (θ ∈ [0, π]), providing structured coverage of the 
 	  MYO from multiple orientations. Building upon this representation, our framework 
-	  introduces two key innovations, as shown in the following figure (details in the paper):
+	  introduces two key innovations, as shown in the following figure (details in the <a href="https://github.com/kamruleee51/XXX" target="_blank" rel="noopener noreferrer">Paper</a>.):
 	</p>
 
 	<ul class="limitations-list" style="margin-left: 3rem;">
@@ -453,16 +453,47 @@
   estimated: blue wireframe), leading to poor EF estimation.
 </p>
 
-        <p><strong>FeEcho4D</strong> is the first benchmark dataset for fetal echocardiography with full 4D (3D over time) left ventricular meshes, designed to advance prenatal cardiac functional assessment and support clinical translation. It contains over <strong>1,845 expert-annotated 3D volumes</strong> from 52 subjects, covering diverse gestational ages, disease conditions, and fetal poses to capture the complexity of real-world imaging. <em>Additional segmented cases are in progress and will be published in future releases</em>. FeEcho4D enables reliable segmentation, motion estimation, and 3D reconstruction for AI-driven fetal cardiac analysis. As illustrated in the figure above, the development of the dataset from raw 4D volumes to 4D mesh generation proceeds through six key steps:</p>
+          
+    </section>
 
-          <ol>
-              <li><strong>Data extraction</strong> from raw STIC acquisitions using <em>4DView</em> software (GE Healthcare, Chicago, IL, USA).</li>
-              <li><strong>Radial slice extraction</strong> at each time frame.</li>
-              <li><strong>Manual delineation</strong> of myocardium at clinically important time points—end-diastole (ED) and end-systole (ES).</li>
-              <li><strong>Motion tracking</strong> to generate masks for intermediate frames.</li>
-              <li><strong>Manual refinement</strong> of the propagated masks to correct tracking errors.</li>
-              <li><strong>Slice-to-mask reconstruction</strong> for all time frames, producing complete 4D segmentations of each fetal echocardiography volume.</li>
-          </ol>
+    <!-- Dataset Preparation & Annotation -->
+    <section id="data_pre" class="section">
+      <h2>Annotation</h2>
+	  
+	<p>
+	  Our FeEcho4D dataset development from raw 4D volumes to 4D mesh generation 
+	  proceeds through six key steps:
+	</p>
+
+	<ol style="margin-left: 3em;">
+	  <li>
+		<strong>Data extraction</strong> from raw STIC acquisitions using 
+		<em>4DView</em> software (GE Healthcare, Chicago, IL, USA).
+	  </li>
+
+	  <li>
+		<strong>Radial slice extraction</strong> at each time frame.
+	  </li>
+
+	  <li>
+		<strong>Manual delineation</strong> of myocardium at clinically important 
+		time points—end-diastole (ED) and end-systole (ES).
+	  </li>
+
+	  <li>
+		<strong>Motion tracking</strong> to generate masks for intermediate frames.
+	  </li>
+
+	  <li>
+		<strong>Manual refinement</strong> of the propagated masks to correct 
+		tracking errors.
+	  </li>
+
+	  <li>
+		<strong>Slice-to-mask reconstruction</strong> for all time frames, producing 
+		complete 4D segmentations of each fetal echocardiography volume.
+	  </li>
+	</ol>
 
           <style>
             @keyframes fadeSlideIn {
@@ -486,12 +517,6 @@
           <p class="animated-text">
             All steps are described in detail below, including technical and implementation specifics, to ensure reproducibility.
           </p>
-          
-    </section>
-
-    <!-- Dataset Preparation & Annotation -->
-    <section id="data_pre" class="section">
-      <h2>Dataset Preparation & Annotation</h2>
 
       <!-- Step 1 -->
       <h3 class="step-title">Data Extraction Step</h3>
@@ -902,6 +927,10 @@
     <!-- Dataset Access & Licensing -->
     <section id="data_acc" class="section">
       <h2>Dataset Access & Licensing</h2>
+	  
+	  <p><strong>FeEcho4D</strong> is the first benchmark dataset for fetal echocardiography with full 4D (3D over time) left ventricular meshes, designed to advance prenatal cardiac functional assessment and support clinical translation. It contains over <strong>1,845 expert-annotated 3D volumes</strong> from 52 subjects, covering diverse gestational ages, disease conditions, and fetal poses to capture the complexity of real-world imaging. <em>Additional segmented cases are in progress and will be published in future releases</em>. FeEcho4D enables reliable segmentation, motion estimation, and 3D reconstruction for AI-driven fetal cardiac analysis. As illustrated in the figure above, the development of the dataset from raw 4D volumes to 4D mesh generation proceeds through six key steps:</p>
+
+	  
       <p>
         Data access is available upon request for non-commercial research use. Please contact the dataset team or fill in the 
         application form (coming soon).
