@@ -340,34 +340,36 @@
 
     <!-- Background & Motivation -->
     <section id="bg" class="section">
-      <h2>Background & Motivation</h2>
+      <h2>Motivation</h2>
         <p>
 		Fetal echocardiography is the primary imaging modality for prenatal assessment 
 		of cardiac anatomy and function, yet most clinical analysis and existing deep 
-		learning approaches remain fundamentally two-dimensional. Conventional 2D views, 
+		learning (DL) approaches remain fundamentally two-dimensional. Conventional 2D views, 
 		such as short-axis (SAX) and long-axis (LAX) imaging, suffer from several 
 		important limitations:
 	  </p>
-	      <li>
-      <strong>Partial cardiac observations</strong> that limit accurate characterization 
-      of complex 3D cardiac geometry.
-    </li>
 
-    <li>
-      <strong>High sensitivity to probe misalignment and operator variability</strong>, 
-      often causing apical foreshortening where the true ventricular apex is not fully captured.
-    </li>
+	  <ul class="limitations-list" style="margin-left: 2rem;">
+		<li>
+		  <strong>Partial cardiac observations</strong> that limit accurate characterization 
+		  of complex 3D cardiac geometry.
+		</li>
 
-    <li>
-      <strong>Inaccurate volumetric and functional assessment</strong>, including 
-      underestimation of left ventricular (LV) volumes and cardiac function.
-    </li>
-	
+		<li>
+		  <strong>High sensitivity to probe misalignment and operator variability</strong>, 
+		  often causing apical foreshortening where the true ventricular apex is not fully captured.
+		</li>
+
+		<li>
+		  <strong>Inaccurate volumetric and functional assessment</strong>, including 
+		  underestimation of left ventricular (LV) volumes and cardiac function.
+		</li>
+	  </ul>
 	 <p>
     In contrast, 3D echocardiography is less prone to foreshortening because the 
     full ventricular volume is acquired directly without relying on precise 
     imaging-plane alignment. Although 3D and 4D (3D over time) fetal echocardiography 
-    offer the potential for comprehensive cardiac assessment, progress in this direction 
+    offer the potential for comprehensive cardiac assessment, and progress in this direction 
     has remained limited due to the absence of publicly available 4D datasets and the 
     challenges associated with volumetric analysis.
   </p>
