@@ -413,15 +413,37 @@
 		  </li>
 
 		</ul>
-        
-		 <p>
-	  To overcome the challenges of 3D/4D annotation, we first introduce 
+
+	<div id="fig-radial">
+	  <img src="Image/Dataset-Step5-GHD.png" alt="Intro image"
+		   style="display:block; margin:0 auto; max-width:100%; height:auto;">
+	  <p class="figure-caption" style="color: red;">
+		<strong>Fig. 1:</strong> Proposed full-stack framework from data preparation 
+		to mesh reconstruction. (A) Radial FeEcho4D data preparation. 
+		(B) Segmentation network incorporating geometric inductive bias. 
+		(C) Sparse radial slice-to-3D reconstruction. A purely data-driven UNet 
+		produces anatomically implausible meshes (ground truth: red wireframe and 
+		estimated: blue wireframe), leading to poor EF estimation.
+	  </p>
+	</div>     
+	 
+	<p>
+	  To overcome the challenges of 3D/4D annotation, we introduce 
 	  <strong>radial slicing</strong>, which yields consistent and interpretable 
 	  U-shaped MYO contours, unlike traditional SAX and LAX views. Our radial slicing 
 	  extracts 2D slices by rotating the slicing plane around the LV longitudinal axis 
 	  at fixed angular intervals (θ ∈ [0, π]), providing structured coverage of the 
-	  MYO from multiple orientations. Building upon this representation, our framework 
-	  introduces two key innovations, as shown in <a href="#fig-framework" class="fig-ref">Fig. 1</a> (details in the <a href="https://github.com/kamruleee51/XXX" target="_blank" rel="noopener noreferrer">Paper</a>):
+	  MYO from multiple orientations. This cylindrical-coordinate acquisition enables 
+	  consistent LV visualization around the heart, producing stable U-shaped MYO 
+	  appearances across slices, as shown in 
+	  <a href="#fig-radial" class="fig-ref">Fig. 1</a>. 
+
+	  Building upon this representation, our framework introduces two key innovations, 
+	  as shown in <a href="#fig-framework" class="fig-ref">Fig. 2</a> 
+	  (details in the 
+	  <a href="https://github.com/kamruleee51/XXX" target="_blank" rel="noopener noreferrer">
+		paper
+	  </a>):
 	</p>
 
 	<ul class="limitations-list" style="margin-left: 3rem;">
@@ -446,7 +468,7 @@
 	  <img src="Image/Introduction.png" alt="Intro image"
 		   style="display:block; margin:0 auto; max-width:100%; height:auto;">
 	  <p class="figure-caption" style="color: red;">
-		<strong>Fig. 1:</strong> Proposed full-stack framework from data preparation 
+		<strong>Fig. 2:</strong> Proposed full-stack framework from data preparation 
 		to mesh reconstruction. (A) Radial FeEcho4D data preparation. 
 		(B) Segmentation network incorporating geometric inductive bias. 
 		(C) Sparse radial slice-to-3D reconstruction. A purely data-driven UNet 
