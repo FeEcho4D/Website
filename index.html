@@ -559,11 +559,11 @@
       <!-- Step 2 -->
       <h4 class="step-title">2. Radial Slice Extraction Step</h4>
       <p>
-        All volumes were radially resampled using Algorithm 1, as illustrated in <a href="#fig-Rad_extraction" class="fig-ref">Fig. 4</a>. This procedure generates a set of uniformly sampled radial slices (H×W) at fixed angular intervals, which together form structured radial 3D volumes. Compared to conventional SAX and LAX views, where the left ventricular shape often transitions from an apparent U-shape to blob-like contours, radial slices consistently preserve a U-shaped anatomy across depths. This structural consistency greatly facilitates accurate and efficient manual annotation, as shown in the segmentation of all S slices in the figure below.  
+        All volumes were radially resampled using <a href="#alg-slicing" class="fig-ref">Algorithm 1</a>, as illustrated in <a href="#fig-Rad_extraction" class="fig-ref">Fig. 4</a>. This procedure generates a set of uniformly sampled radial slices (H×W) at fixed angular intervals, which together form structured radial 3D volumes. Compared to conventional SAX and LAX views, where the left ventricular shape often transitions from an apparent U-shape to blob-like contours, radial slices consistently preserve a U-shaped anatomy across depths. This structural consistency greatly facilitates accurate and efficient manual annotation, as shown in the segmentation of all S slices in the figure below.  
       </p>
 
         <!-- Algorithm block: Radial Slice Extraction -->
-        <details class="rounded-lg border p-3 my-3" style="background:#fafafa;">
+        <details id="alg-slicing" class="rounded-lg border p-3 my-3" style="background:#fafafa;">
           <summary style="cursor:pointer;"><strong>Algorithm 1 — Radial Slice Extraction</strong></summary>
           <div style="margin-top:10px; line-height:1.55;">
             <p>
@@ -792,7 +792,7 @@
     <section id="data_rec" class="section">
       <h2>3D Reconstruction</h2>
 	  <p>
-	  Prior to mesh reconstruction (details in the <a href="https://github.com/kamruleee51/XXX" target="_blank" rel="noopener noreferrer">Paper</a>), radial segmentations (manual or SCOPE-Net 
+	  Prior to mesh reconstruction (details in the <a href="https://github.com/kamruleee51/XXX" target="_blank" rel="noopener noreferrer">paper</a>), radial segmentations (manual or SCOPE-Net 
 	  predictions) are embedded into a common 3D coordinate system. Each slice is 
 	  rotated around the LV center according to its acquisition angle, producing a 
 	  sparse cylindrical representation for geometrically consistent mesh 
