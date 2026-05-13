@@ -658,11 +658,11 @@
       <!-- Step 4 -->
       <h5 class="step-title">4-5. Motion Tracking & Manual Refinement Step</h5>
       <p>
-        FeEcho4D generates dense cardiac masks by propagating sparse ED and ES annotations using <strong><a href="https://www.nature.com/articles/s41598-020-75525-4" target="_blank">B-spline Fourier (BSF) motion model</a></strong> (Algorithm 2), which blends local and global deformations and regularizes trajectories to capture periodic motion (as shown in <a href="#fig-Rad_bsf" class="fig-ref">Fig. 6</a>). This ensures temporally coherent, anatomically consistent masks, further refined with <strong>skeleton-based width correction</strong> (Algorithm 3) to maintain uniform myocardial thickness, and all results are manually reviewed for accuracy.
+        FeEcho4D generates dense cardiac masks by propagating sparse ED and ES annotations using <strong><a href="https://www.nature.com/articles/s41598-020-75525-4" target="_blank">B-spline Fourier (BSF) motion model</a></strong> (<a href="#alg-algo2" class="fig-ref">Algorithm 2</a>), which blends local and global deformations and regularizes trajectories to capture periodic motion (as shown in <a href="#fig-Rad_bsf" class="fig-ref">Fig. 6</a>). This ensures temporally coherent, anatomically consistent masks, further refined with <strong>skeleton-based width correction</strong> (<a href="#alg-algo3" class="fig-ref">Algorithm 3</a>) to maintain uniform myocardial thickness, and all results are manually reviewed for accuracy.
       </p>
 
       <!-- Algorithm block: BSF-Based Temporal Mask Propagation -->
-      <details class="rounded-lg border p-3 my-3" style="background:#fafafa;">
+      <details id="alg-algo2" class="rounded-lg border p-3 my-3" style="background:#fafafa;">
         <summary style="cursor:pointer;"><strong>Algorithm 2 — BSF-Based Temporal Mask Propagation</strong></summary>
         <div style="margin-top:10px; line-height:1.55;">
           <p>
@@ -723,7 +723,7 @@
       </details>
 
       <!-- Algorithm block: Skeleton-Based 2D Mask Refinement -->
-      <details class="rounded-lg border p-3 my-3" style="background:#fafafa;">
+      <details id="alg-algo3" class="rounded-lg border p-3 my-3" style="background:#fafafa;">
         <summary style="cursor:pointer;"><strong>Algorithm 3 — Skeleton-Based 2D Mask Refinement</strong></summary>
         <div style="margin-top:10px; line-height:1.55;">
           <p>
@@ -802,11 +802,11 @@
       <!-- Step 5 -->
       <h5 class="step-title">3D Reconstruction with GHD</h5>
       <p>
-        The 3D over time left ventricular meshes are reconstructed into smooth, temporally consistent meshes using GHD. The meshes are further processed with <strong>Differentiable Voxelization & Slicing (DVS)</strong> (as shown in the following <a href="#fig-Rad_ghd" class="fig-ref">Fig. 7</a>) (details in Algorithm 4), enabling differentiable conversion to voxel grids and slices for precise dynamic metrics and seamless integration with learning-based models. The resulting 4D meshes of ten different example patients are shown in the following <a href="#fig-Rad_ghd_video" class="fig-ref">Fig. 8</a>. 
+        The 3D over time left ventricular meshes are reconstructed into smooth, temporally consistent meshes using GHD. The meshes are further processed with <strong>Differentiable Voxelization & Slicing (DVS)</strong> (as shown in the following <a href="#fig-Rad_ghd" class="fig-ref">Fig. 7</a>) (details in <a href="#alg-algo4" class="fig-ref">Algorithm 4</a>), enabling differentiable conversion to voxel grids and slices for precise dynamic metrics and seamless integration with learning-based models. The resulting 4D meshes of ten different example patients are shown in the following <a href="#fig-Rad_ghd_video" class="fig-ref">Fig. 8</a>. 
       </p>
 
       <!-- Algorithm block: GHD-Based 3D Mesh Reconstruction -->
-      <details class="rounded-lg border p-3 my-3" style="background:#fafafa;">
+      <details id="alg-algo4" class="rounded-lg border p-3 my-3" style="background:#fafafa;">
         <summary style="cursor:pointer;"><strong>Algorithm 4 — GHD-Based 3D Mesh Reconstruction</strong></summary>
         <div style="margin-top:10px; line-height:1.55;">
           <p>
@@ -877,11 +877,11 @@
       <!-- Step 5 -->
       <h5 class="step-title">Clinical Metrics Calculation</h5>
       <p>
-        Clinical biomarkers, such as <strong>Stroke Volume (SV)</strong>, <strong>Ejection Fraction (EF)</strong>, <strong>Global Longitudinal Strain (GLS)</strong>, and <strong>Global Circumferential Strain (GCS)</strong>, are derived from the reconstructed left ventricular meshes, as explained in detail in Algorithm 5 and the following <a href="#fig-Rad_metric" class="fig-ref">Fig. 9</a>. SV and EF are computed from endocardial volumes, while GLS and GCS are obtained by averaging changes in apex-to-base lengths and mid-ventricular circumferences across representative planes or cross-sections, excluding extreme outliers for robustness.
+        Clinical biomarkers, such as <strong>Stroke Volume (SV)</strong>, <strong>Ejection Fraction (EF)</strong>, <strong>Global Longitudinal Strain (GLS)</strong>, and <strong>Global Circumferential Strain (GCS)</strong>, are derived from the reconstructed left ventricular meshes, as explained in detail in <a href="#alg-algo5" class="fig-ref">Algorithm 5</a> and the following <a href="#fig-Rad_metric" class="fig-ref">Fig. 9</a>. SV and EF are computed from endocardial volumes, while GLS and GCS are obtained by averaging changes in apex-to-base lengths and mid-ventricular circumferences across representative planes or cross-sections, excluding extreme outliers for robustness.
       </p>
 
       <!-- Algorithm block: Clinical Metrics Computation -->
-      <details class="rounded-lg border p-3 my-3" style="background:#fafafa;">
+      <details id="alg-algo5" class="rounded-lg border p-3 my-3" style="background:#fafafa;">
         <summary style="cursor:pointer;"><strong>Algorithm 5 — Clinical Metrics Computation</strong></summary>
         <div style="margin-top:10px; line-height:1.55;">
           <ol>
