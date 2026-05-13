@@ -658,7 +658,7 @@
       <!-- Step 4 -->
       <h5 class="step-title">4-5. Motion Tracking & Manual Refinement Step</h5>
       <p>
-        FeEcho4D generates dense cardiac masks by propagating sparse ED and ES annotations using <strong><a href="https://www.nature.com/articles/s41598-020-75525-4" target="_blank">B-spline Fourier (BSF) motion model</a></strong> (Algorithm 2), which blends local and global deformations and regularizes trajectories to capture periodic motion (as shown in the following figure). This ensures temporally coherent, anatomically consistent masks, further refined with <strong>skeleton-based width correction</strong> (Algorithm 3) to maintain uniform myocardial thickness, and all results are manually reviewed for accuracy.
+        FeEcho4D generates dense cardiac masks by propagating sparse ED and ES annotations using <strong><a href="https://www.nature.com/articles/s41598-020-75525-4" target="_blank">B-spline Fourier (BSF) motion model</a></strong> (Algorithm 2), which blends local and global deformations and regularizes trajectories to capture periodic motion (as shown in <a href="#fig-Rad_bsf" class="fig-ref">Fig. 6</a>). This ensures temporally coherent, anatomically consistent masks, further refined with <strong>skeleton-based width correction</strong> (Algorithm 3) to maintain uniform myocardial thickness, and all results are manually reviewed for accuracy.
       </p>
 
       <!-- Algorithm block: BSF-Based Temporal Mask Propagation -->
@@ -776,7 +776,7 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 
-    <div style="max-width:1000px; margin:0 auto;">
+    <div id="fig-Rad_bsf" style="max-width:1000px; margin:0 auto;">
       <video controls autoplay muted loop 
              style="display:block; width:100%; height:auto; border-radius:6px;">
         <source src="Image/Dataset-Step4-Motion_Tracking.mov" type="video/mp4">
@@ -802,7 +802,7 @@
       <!-- Step 5 -->
       <h5 class="step-title">3D Reconstruction with GHD</h5>
       <p>
-        The 3D over time left ventricular meshes are reconstructed into smooth, temporally consistent meshes using GHD. The meshes are further processed with <strong>Differentiable Voxelization & Slicing (DVS)</strong> (as shown in the following figure below) (details in Algorithm 4), enabling differentiable conversion to voxel grids and slices for precise dynamic metrics and seamless integration with learning-based models. The resulting 4D meshes of ten different example patients are shown in the following video. 
+        The 3D over time left ventricular meshes are reconstructed into smooth, temporally consistent meshes using GHD. The meshes are further processed with <strong>Differentiable Voxelization & Slicing (DVS)</strong> (as shown in the following <a href="#fig-Rad_ghd" class="fig-ref">Fig. 7</a>) (details in Algorithm 4), enabling differentiable conversion to voxel grids and slices for precise dynamic metrics and seamless integration with learning-based models. The resulting 4D meshes of ten different example patients are shown in the following <a href="#fig-Rad_ghd_video" class="fig-ref">Fig. 8</a>. 
       </p>
 
       <!-- Algorithm block: GHD-Based 3D Mesh Reconstruction -->
@@ -853,7 +853,7 @@
         </div>
       </details>
 
-      <div style="max-width:1000px; margin:0 auto;">
+      <div id="fig-Rad_ghd" style="max-width:1000px; margin:0 auto;">
         <img src="Image/Dataset-Step5-GHD.png" 
              alt="GHD Reconstruction"
              style="display:block; width:100%; height:auto; border-radius:6px;">
@@ -863,7 +863,7 @@
         </p>
 
 
-      <div style="max-width:1000px; margin:0 auto;">
+      <div id="fig-Rad_ghd_video" style="max-width:1000px; margin:0 auto;">
         <video controls autoplay muted loop 
                style="display:block; width:100%; height:auto; border-radius:6px;">
           <source src="Image/Dataset-Reconstruction_Result.mov" type="video/mp4">
@@ -877,7 +877,7 @@
       <!-- Step 5 -->
       <h5 class="step-title">Clinical Metrics Calculation</h5>
       <p>
-        Clinical biomarkers, such as <strong>Stroke Volume (SV)</strong>, <strong>Ejection Fraction (EF)</strong>, <strong>Global Longitudinal Strain (GLS)</strong>, and <strong>Global Circumferential Strain (GCS)</strong>, are derived from the reconstructed left ventricular meshes, as explained in detail in Algorithm 5 and the following figure below. SV and EF are computed from endocardial volumes, while GLS and GCS are obtained by averaging changes in apex-to-base lengths and mid-ventricular circumferences across representative planes or cross-sections, excluding extreme outliers for robustness.
+        Clinical biomarkers, such as <strong>Stroke Volume (SV)</strong>, <strong>Ejection Fraction (EF)</strong>, <strong>Global Longitudinal Strain (GLS)</strong>, and <strong>Global Circumferential Strain (GCS)</strong>, are derived from the reconstructed left ventricular meshes, as explained in detail in Algorithm 5 and the following <a href="#fig-Rad_metric" class="fig-ref">Fig. 8</a>. SV and EF are computed from endocardial volumes, while GLS and GCS are obtained by averaging changes in apex-to-base lengths and mid-ventricular circumferences across representative planes or cross-sections, excluding extreme outliers for robustness.
       </p>
 
       <!-- Algorithm block: Clinical Metrics Computation -->
@@ -945,7 +945,7 @@
       </details>
     </section>
 
-    <div style="max-width:1000px; margin:0 auto;">
+    <div id="fig-Rad_metric" style="max-width:1000px; margin:0 auto;">
       <img src="Image/Biomarker Computation.png" 
            alt="Clinical Metrics"
            style="display:block; width:100%; height:auto; border-radius:6px;">
