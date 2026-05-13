@@ -559,7 +559,7 @@
       <!-- Step 2 -->
       <h4 class="step-title">2. Radial Slice Extraction Step</h4>
       <p>
-        All volumes were radially resampled using Algorithm 1, as illustrated in the figure below. This procedure generates a set of uniformly sampled radial slices (H×W) at fixed angular intervals, which together form structured radial 3D volumes. Compared to conventional SAX and LAX views, where the left ventricular shape often transitions from an apparent U-shape to blob-like contours, radial slices consistently preserve a U-shaped anatomy across depths. This structural consistency greatly facilitates accurate and efficient manual annotation, as shown in the segmentation of all S slices in the figure below.  
+        All volumes were radially resampled using Algorithm 1, as illustrated in <a href="#fig-Rad_extraction" class="fig-ref">Fig. 4</a>. This procedure generates a set of uniformly sampled radial slices (H×W) at fixed angular intervals, which together form structured radial 3D volumes. Compared to conventional SAX and LAX views, where the left ventricular shape often transitions from an apparent U-shape to blob-like contours, radial slices consistently preserve a U-shaped anatomy across depths. This structural consistency greatly facilitates accurate and efficient manual annotation, as shown in the segmentation of all S slices in the figure below.  
       </p>
 
         <!-- Algorithm block: Radial Slice Extraction -->
@@ -626,7 +626,7 @@
 
 
 
-      <div style="max-width:1000px; margin:0 auto;">
+      <div id="fig-Rad_extraction" style="max-width:1000px; margin:0 auto;">
         <video controls autoplay muted loop 
                style="display:block; width:100%; height:auto; border-radius:6px;">
           <source src="Image/Dataset-Step2-Radial_Resampling.mov" type="video/mp4">
@@ -642,9 +642,9 @@
       <!-- Step 3 -->
       <h5 class="step-title">3. Manual Delineation Step</h5>
       <p>
-        Using a custom-built annotation tool (<a href="https://github.com/haziqshahard/SegmentationApp" target="_blank">details in our SegmentationApp</a>), experts manually delineated the left ventricular myocardium and cavity by marking points along their boundaries (see video below). The tool supports 3D volume loading, interactive contour drawing, and real-time quality control through mask overlay. It also provides temporal navigation to capture cardiac motion, particularly valuable in cases affected by acoustic dropout, and annotation toggling for iterative refinement. To ensure accuracy and consistency, all annotations underwent multiple rounds of expert review followed by cardiologist validation.
+        Using a custom-built annotation tool (<a href="https://github.com/haziqshahard/SegmentationApp" target="_blank">details in our SegmentationApp</a>), experts manually delineated the LV's MYO and cavity by marking points along their boundaries (see <a href="#fig-Rad_annotation" class="fig-ref">Fig. 5</a>). The tool supports 3D volume loading, interactive contour drawing, and real-time quality control through mask overlay. It also provides temporal navigation to capture cardiac motion, particularly valuable in cases affected by acoustic dropout, and annotation toggling for iterative refinement. To ensure accuracy and consistency, all annotations underwent multiple rounds of expert review followed by cardiologist validation.
       </p>
-      <div style="max-width:1000px; margin:0 auto;">
+      <div id="fig-Rad_annotation" style="max-width:1000px; margin:0 auto;">
         <img src="Image/Dataset-Step3-Segmentation_App.gif" 
              alt="Manual Annotation"
              style="display:block; width:100%; height:auto; border-radius:6px;">
