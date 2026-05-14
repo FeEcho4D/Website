@@ -958,7 +958,7 @@
     <section id="data_acc" class="section">
       <h2>Dataset Access & Licensing</h2>
 	  
-	  <section class="dataset-section">
+	<section class="dataset-section">
 
   <p>
     The <strong>FeEcho4D</strong> dataset comprises fetal 4D echocardiography 
@@ -971,7 +971,19 @@
   </p>
 
   <p>
-    Each patient folder (<code>Patient0xx</code>) contains the following structure:
+    Each patient folder (<code>Patient0xx</code>) follows the filename convention:
+  </p>
+
+  <p style="margin-left: 2rem;">
+    <code>Patient0xx_slice0yytime0zz.png</code><br><br>
+
+    xx = patient ID<br>
+    yy = slice ID<br>
+    zz = time frame ID
+  </p>
+
+  <p>
+    The folder structure is organized as follows:
   </p>
 
   <pre style="background:#f5f5f5; padding:16px; border-radius:8px; overflow-x:auto; line-height:1.5;">
@@ -1021,16 +1033,7 @@ Patient0xx/
 
   </pre>
 
-  <p>
-    <strong>Filename convention:</strong><br>
-    <code>Patient0xx_slice0yytime0zz.png</code><br><br>
-
-    xx = patient ID<br>
-    yy = slice ID<br>
-    zz = time frame ID
-  </p>
-
-</section>
+</section>  
 
 	  
       <p>
