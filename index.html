@@ -541,7 +541,7 @@
       <!-- Step 1 -->
       <h3 class="step-title">1. Data Extraction Step</h3>
       <p>
-        Raw STIC acquisitions were retrieved directly from the fetal echocardiography system and processed with 4DView software (GE Healthcare, Chicago, IL, USA) to export temporally resolved 3D volumes (illustrated in the figure below). For each temporal extraction, slice number and spacing were kept constant to preserve the spatial–temporal integrity of the original 4D ultrasound data for subsequent analysis. The following <a href="#fig-STIC" class="fig-ref">Fig. 3</a> shows examples of the 3D extracted volume at different times for the same patient. 
+        Raw STIC acquisitions were retrieved directly from the fetal echocardiography system and processed with 4DView software (GE Healthcare, Chicago, IL, USA) to export temporally resolved 3D volumes. For each temporal extraction, slice number and spacing were kept constant to preserve the spatial–temporal integrity of the original 4D ultrasound data for subsequent analysis. The following <a href="#fig-STIC" class="fig-ref">Fig. 3</a> shows examples of the 3D extracted volume at different times for the same patient. 
 		<div id="fig-STIC" style="max-width:1000px; margin:0 auto;">
 
 		  <video controls autoplay muted loop
@@ -559,7 +559,7 @@
       <!-- Step 2 -->
       <h4 class="step-title">2. Radial Slice Extraction Step</h4>
       <p>
-        All volumes were radially resampled using <a href="#alg-slicing" class="fig-ref">Algorithm 1</a>, as illustrated in <a href="#fig-Rad_extraction" class="fig-ref">Fig. 4</a>. This procedure generates a set of uniformly sampled radial slices (H×W) at fixed angular intervals, which together form structured radial 3D volumes. Compared to conventional SAX and LAX views, where the left ventricular shape often transitions from an apparent U-shape to blob-like contours, radial slices consistently preserve a U-shaped anatomy across depths. This structural consistency greatly facilitates accurate and efficient manual annotation, as shown in the segmentation of all S slices in the figure below.  
+        All volumes were radially resampled using <a href="#alg-slicing" class="fig-ref">Algorithm 1</a>, as illustrated in <a href="#fig-Rad_extraction" class="fig-ref">Fig. 4</a>. This procedure generates a set of uniformly sampled radial slices (H×W) at fixed angular intervals, which together form structured radial 3D volumes. Compared to conventional SAX and LAX views, where the left ventricular shape often transitions from an apparent U-shape to blob-like contours, radial slices consistently preserve a U-shaped anatomy across depths. This structural consistency greatly facilitates accurate and efficient manual annotation, as shown in the segmentation of all S slices (see <a href="#fig-radial" class="fig-ref">Fig. 1</a>).  
       </p>
 
         <!-- Algorithm block: Radial Slice Extraction -->
