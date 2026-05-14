@@ -958,7 +958,79 @@
     <section id="data_acc" class="section">
       <h2>Dataset Access & Licensing</h2>
 	  
-	  <p><strong>FeEcho4D</strong> is the first benchmark dataset for fetal echocardiography with full 4D (3D over time) left ventricular meshes, designed to advance prenatal cardiac functional assessment and support clinical translation. It contains over <strong>1,845 expert-annotated 3D volumes</strong> from 52 subjects, covering diverse gestational ages, disease conditions, and fetal poses to capture the complexity of real-world imaging. <em>Additional segmented cases are in progress and will be published in future releases</em>. FeEcho4D enables reliable segmentation, motion estimation, and 3D reconstruction for AI-driven fetal cardiac analysis. As illustrated in the figure above, the development of the dataset from raw 4D volumes to 4D mesh generation proceeds through six key steps:</p>
+	  <section class="dataset-section">
+
+  <p>
+    The <strong>FeEcho4D</strong> dataset comprises fetal 4D echocardiography 
+    sequences from 52 annotated subjects, including both healthy and congenital 
+    heart disease (CHD) cases such as Tetralogy of Fallot (ToF) and 
+    dextro-transposition of the great arteries (d-TGA). The dataset provides 
+    spatiotemporal annotations of the left ventricle (LV) and myocardium (MYO), 
+    together with corresponding temporally coherent 4D LV meshes for cardiac 
+    reconstruction and functional analysis.
+  </p>
+
+  <p>
+    Each patient folder (<code>Patient0xx</code>) contains the following structure:
+  </p>
+
+  <pre style="background:#f5f5f5; padding:16px; border-radius:8px; overflow-x:auto; line-height:1.5;">
+
+Patient0xx/
+├── image/
+│   ├── Patient0xx_slice0yytime0zz.png
+│   ├── ...
+│   └── Radially extracted 2D fetal echocardiography slices
+│
+├── mask/
+│   ├── Patient0xx_slice0yytime0zz.png
+│   ├── ...
+│   └── Manual LV/MYO segmentations
+│       ├── LV cavity   = 127
+│       └── MYO         = 255
+│
+├── mesh/
+│   ├── mesh_time0zz.obj
+│   ├── ...
+│   └── Reconstructed 3D LV meshes over time
+│
+├── scribble/
+│   ├── Patient0xx_slice0yytime0zz_scribbleTypeN.png
+│   ├── ...
+│   └── Weak scribble prompts (N = 1 ... 10)
+│
+├── Patient0xx_bbox.csv
+│   └── Bounding-box prompts:
+│       ├── filename
+│       ├── xmin
+│       ├── ymin
+│       ├── xmax
+│       └── ymax
+│
+├── Patient0xx.mp4
+│   └── 3D LV mesh visualization over time
+│
+└── Patient0xx_info.cfg
+    ├── diagnosis = healthy / ToF / d-TGA
+    ├── x_mm
+    ├── y_mm
+    ├── z_mm
+    ├── num_frames
+    ├── ED_time
+    └── ES_time
+
+  </pre>
+
+  <p>
+    <strong>Filename convention:</strong><br>
+    <code>Patient0xx_slice0yytime0zz.png</code><br><br>
+
+    xx = patient ID<br>
+    yy = slice ID<br>
+    zz = time frame ID
+  </p>
+
+</section>
 
 	  
       <p>
